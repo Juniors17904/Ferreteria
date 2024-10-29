@@ -18,4 +18,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="410dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="CATEGORIAS"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewCategorias"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

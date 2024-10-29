@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@drawable/rounded_corners">
 
     <ImageView
         android:id="@+id/imagenCategoria"
@@ -11,7 +12,8 @@
         android:layout_height="108dp"
         android:scaleType="centerCrop"
 
-        android:src="@drawable/construccion" />
+        android:src="@drawable/construccion"
+        android:background="@drawable/rounded_corners"/>
 
     <LinearLayout
         android:layout_width="287dp"
