@@ -34,11 +34,12 @@ public class MenuActivity extends AppCompatActivity {
     private CategoriaAdapter adapter;
     private List<Categoria> categorias;
 
-    private static final String TAG = "MenuActivity"; // Etiqueta para los logs
+    private static final String TAG = "MenuActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("----------------------------------", "--------------------------------------");
 
         //-------------- Binding: Usa View Binding para simplificar la gestión de vistas.----------------
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
@@ -78,10 +79,27 @@ public class MenuActivity extends AppCompatActivity {
         Log.i(TAG, "onCreate: NavigationView configurado con NavController");
 
         // Inicializar RecyclerView
-        initRecyclerView();
+        //initRecyclerViewCategorias();
     }
 
-    private void initRecyclerView() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflar el menú; esto añade elementos a la barra de acción si está presente.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        Log.i(TAG, "onCreateOptionsMenu: Menú inflado");
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu2);
+        Log.i(TAG, "onSupportNavigateUp: Navegando hacia arriba");
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+
+    private void initRecyclerViewCategorias() {
         Log.i(TAG, "initRecyclerView: Inicializando RecyclerView");
         recyclerView = findViewById(R.id.recyclerViewCategorias);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -122,21 +140,5 @@ public class MenuActivity extends AppCompatActivity {
         adapter = new CategoriaAdapter(categorias);
         recyclerView.setAdapter(adapter);
         Log.i(TAG, "initRecyclerView: Adaptador configurado con " + categorias.size() + " categorías");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflar el menú; esto añade elementos a la barra de acción si está presente.
-        getMenuInflater().inflate(R.menu.menu, menu);
-        Log.i(TAG, "onCreateOptionsMenu: Menú inflado");
-        return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu2);
-        Log.i(TAG, "onSupportNavigateUp: Navegando hacia arriba");
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }

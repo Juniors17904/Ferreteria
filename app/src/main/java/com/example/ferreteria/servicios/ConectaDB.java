@@ -173,5 +173,7 @@ public class ConectaDB extends SQLiteOpenHelper {
         Log.i(TAG, "Todas las categorías fueron insertadas correctamente.");
     }
 
+
+
 }
 

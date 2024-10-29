@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.util.Log; // Importar Log
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,15 +17,18 @@ import java.util.List;
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder> {
 
     private List<Categoria> categorias;
+    private static final String TAG = "CategoriaAdapter";
 
     public CategoriaAdapter(List<Categoria> categorias) {
         this.categorias = categorias;
+        Log.i(TAG, "Adaptador de categorías inicializado con " + categorias.size() + " categorías.");
     }
 
     @NonNull
     @Override
     public CategoriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_categoria, parent, false);
+        Log.i(TAG, "onCreateViewHolder: Creando nueva vista para el elemento de categoría.");
         return new CategoriaViewHolder(view);
     }
 
@@ -34,10 +38,12 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         holder.nombreTextView.setText(categoria.getNombre());
         holder.descripcionTextView.setText(categoria.getDescripcion());
         holder.imagenImageView.setImageResource(categoria.getImagen());
+        Log.i(TAG, "onBindViewHolder: Asociando datos a la posición " + position + ", Categoría: " + categoria.getNombre());
     }
 
     @Override
     public int getItemCount() {
+        Log.i(TAG, "getItemCount: Total de categorías: " + categorias.size());
         return categorias.size();
     }
 
@@ -50,6 +56,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
             imagenImageView = itemView.findViewById(R.id.imagenCategoria);
             nombreTextView = itemView.findViewById(R.id.nombreCategoria);
             descripcionTextView = itemView.findViewById(R.id.descripcionCategoria);
+            Log.i(TAG, "CategoriaViewHolder: Vista del elemento de categoría inicializada.");
         }
     }
 }
