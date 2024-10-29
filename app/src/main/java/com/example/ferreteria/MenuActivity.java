@@ -40,14 +40,16 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //-------------- Binding: Usa View Binding para simplificar la gestión de vistas.----------------
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Log.i(TAG, "onCreate: Actividad iniciada");
 
-        // Configuración del ActionBar y Navigation Drawer
+        // -----------------------Configuración del ActionBar y Navigation Drawer-----------------------
         setSupportActionBar(binding.appBarMenu.toolbar);
         Log.i(TAG, "onCreate: Binding inicializado");
 
+        // --------------------Interacciones: Configura eventos como el clic del botón flotante.-----------------
         binding.appBarMenu.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +60,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        // ------------------------Drawer Layout: Maneja un menú lateral para navegación.--------------------
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -66,6 +69,7 @@ public class MenuActivity extends AppCompatActivity {
                 .build();
         Log.i(TAG, "onCreate: AppBarConfiguration inicializado");
 
+        // Navegación: Implementa Jetpack Navigation para fragmentos.
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu2);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         Log.i(TAG, "onCreate: ActionBar configurado con NavController");
