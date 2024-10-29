@@ -173,6 +173,68 @@ public class ConectaDB extends SQLiteOpenHelper {
         Log.i(TAG, "Todas las categorías fueron insertadas correctamente.");
     }
 
+    private void insertarProductos(SQLiteDatabase db) {
+        Log.i(TAG, "Insertando productos...");
+
+        // Lista de productos a insertar, cada producto pertenece a una categoría
+        String[][] productos = {
+                // Categoría 1
+                {"Destornillador", "Destornillador plano de 6 pulgadas.", "10.50", "100", "1", "destornillador.png"},
+                {"Martillo", "Martillo de acero de 16 oz.", "15.75", "50", "1", "martillo.png"},
+                {"Cinta métrica", "Cinta métrica de 5 metros.", "8.25", "200", "1", "cinta_metrica.png"},
+                {"Sierra", "Sierra manual para cortar madera.", "22.00", "30", "1", "sierra.png"},
+                {"Alicate", "Alicate multiusos de 8 pulgadas.", "12.00", "80", "1", "alicate.png"},
+
+                // Categoría 2
+                {"Cemento", "Cemento Portland de alta resistencia.", "5.00", "500", "2", "cemento.png"},
+                {"Ladrillos", "Ladrillos de construcción, 10 unidades.", "50.00", "300", "2", "ladrillos.png"},
+                {"Arena", "Arena de construcción, 1 m3.", "40.00", "200", "2", "arena.png"},
+                {"Piedra", "Piedra de río, 1 m3.", "30.00", "150", "2", "piedra.png"},
+                {"Yeso", "Yeso blanco de secado rápido para acabados interiores.", "28.00", "120", "2", "yeso.png"},
+
+
+                // Categoría 3
+                {"Pintura acrílica", "Pintura acrílica de 1 litro.", "15.00", "75", "3", "pintura_acrilica.png"},
+                {"Brocha", "Brocha de 2 pulgadas.", "3.50", "150", "3", "brocha.png"},
+                {"Rodillo", "Rodillo de pintura de 9 pulgadas.", "8.00", "80", "3", "rodillo.png"},
+                {"Pintura en aerosol", "Pintura en aerosol de 400 ml.", "10.00", "50", "3", "pintura_aerosol.png"},
+                {"Sellador", "Sellador acrílico para exteriores.", "20.00", "60", "3", "sellador.png"},
+
+                // Categoría 4
+                {"Bombilla LED", "Bombilla LED de 9W.", "3.00", "200", "4", "bombilla.png"},
+                {"Toma corriente", "Toma corriente de 3 salidas.", "5.00", "150", "4", "toma_corriente.png"},
+                {"Cable eléctrico", "Cable eléctrico de 10 metros.", "10.00", "100", "4", "cable.png"},
+                {"Interruptor", "Interruptor de luz sencillo.", "2.50", "250", "4", "interruptor.png"},
+                {"Regulador", "Regulador de voltaje 1000VA.", "35.00", "30", "4", "regulador.png"},
+
+                // Categoría 5
+                {"Tubería PVC", "Tubería PVC de 2 pulgadas.", "7.00", "200", "5", "tuberia.png"},
+                {"Grifo", "Grifo de cocina de acero inoxidable.", "40.00", "50", "5", "grifo.png"},
+                {"Codo PVC", "Codo PVC de 2 pulgadas.", "2.00", "300", "5", "codo_pvc.png"},
+                {"Válvula", "Válvula de cierre para tuberías.", "15.00", "150", "5", "valvula.png"},
+                {"Cinta de teflón", "Cinta de teflón para sellar roscas.", "1.50", "400", "5", "cinta_teflon.png"},
+
+                // Categoría 6
+                {"Maceta", "Maceta de cerámica para plantas.", "12.00", "100", "6", "maceta.png"},
+                {"Tijeras de podar", "Tijeras de podar de 8 pulgadas.", "18.00", "80", "6", "tijeras.png"},
+                {"Guantes de jardinería", "Guantes de jardinería de tamaño mediano.", "5.00", "150", "6", "guantes.png"},
+                {"Regadera", "Regadera de 5 litros.", "10.00", "70", "6", "regadera.png"},
+                {"Rastrillo", "Rastrillo de 14 dientes.", "20.00", "60", "6", "rastrillo.png"}
+        };
+
+        // Ejecutar inserciones
+        for (String[] producto : productos) {
+            // Obtener el ID de la imagen desde los recursos
+            int imagenId = context.getResources().getIdentifier(producto[5].replace(".png", ""), "drawable", context.getPackageName());
+
+            String sql = "INSERT INTO " + ConstantesApp.TABLA_PRODUCTOS + " (nombre, descripcion, precio, stock, categoriaId, imagen) VALUES (?, ?, ?, ?, ?, ?)";
+            db.execSQL(sql, new Object[]{producto[0], producto[1], producto[2], producto[3], producto[4], imagenId});
+            Log.i(TAG, "Producto insertado: " + producto[0]);
+        }
+
+        Log.i(TAG, "Todos los productos fueron insertados correctamente.");
+    }
+
 
 
 }
