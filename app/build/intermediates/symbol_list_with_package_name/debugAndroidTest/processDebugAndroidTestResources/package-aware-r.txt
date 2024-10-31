@@ -1,0 +1,3 @@
+com.example.ferreteria.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme
