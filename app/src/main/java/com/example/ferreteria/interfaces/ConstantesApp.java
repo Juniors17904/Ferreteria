@@ -1,7 +1,7 @@
 package com.example.ferreteria.interfaces;
 
 public interface ConstantesApp {
-    String BDD = "ferreterias21.db";
+    String BDD = "ferreterias.db";
     int VERSION = 1;
 
 
@@ -25,6 +25,17 @@ public interface ConstantesApp {
             "    categoriaId INTEGER REFERENCES categorias(id) NOT NULL,\n" +
             "    imagen INTEGER\n" +
             ");\n";
+
+    // Tabla Ofertas
+    String TABLA_OFERTAS = "ofertas";
+    String TABLA_OFERTAS_DDL = "CREATE TABLE ofertas (\n" +
+            "    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,\n" +
+            "    productoId INTEGER REFERENCES productos(id) NOT NULL,\n" +
+            "    descuento NUMERIC(5, 2) NOT NULL,\n" +
+            "    fechaInicio DATE NOT NULL,\n" +
+            "    fechaFin DATE NOT NULL\n" +
+            ");\n";
+
 
     // Tabla Pedidos
     String TABLA_PEDIDOS = "pedidos";

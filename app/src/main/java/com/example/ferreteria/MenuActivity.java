@@ -78,8 +78,6 @@ public class MenuActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         Log.i(TAG, "onCreate: NavigationView configurado con NavController");
 
-        // Inicializar RecyclerView
-        //initRecyclerViewCategorias();
     }
 
     @Override
@@ -99,46 +97,4 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    private void initRecyclerViewCategorias() {
-        Log.i(TAG, "initRecyclerView: Inicializando RecyclerView");
-        recyclerView = findViewById(R.id.recyclerViewCategorias);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Log.i(TAG, "initRecyclerView: LayoutManager configurado como LinearLayoutManager");
-
-        // Inicializar la lista de categorías
-        categorias = new ArrayList<>();
-        Log.i(TAG, "initRecyclerView: Lista de categorías inicializada");
-
-        // Conexión a la base de datos
-        ConectaDB conectaDB = new ConectaDB(this);
-        SQLiteDatabase db = conectaDB.getReadableDatabase(); // Obtener la base de datos
-        Log.i(TAG, "initRecyclerView: Conectando a la base de datos");
-
-        // Ejecutar la consulta
-        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantesApp.TABLA_CATEGORIAS, null);
-        Log.i(TAG, "initRecyclerView: Ejecutando consulta en la tabla " + ConstantesApp.TABLA_CATEGORIAS);
-
-        if (cursor.moveToFirst()) {
-            Log.i(TAG, "initRecyclerView: Se encontraron resultados en la consulta");
-            do {
-                int id = cursor.getInt(0);
-                String nombre = cursor.getString(1);
-                String descripcion = cursor.getString(2);
-                int imagen = cursor.getInt(3);
-
-                // Agregar categoría a la lista
-                categorias.add(new Categoria(id, nombre, descripcion, imagen));
-                Log.i(TAG, "initRecyclerView: Agregando categoría - ID: " + id + ", Nombre: " + nombre + ", Descripción: " + descripcion + ", Imagen: " + imagen);
-            } while (cursor.moveToNext());
-        } else {
-            Log.i(TAG, "initRecyclerView: No se encontraron categorías en la consulta");
-        }
-        cursor.close();
-        Log.i(TAG, "initRecyclerView: Cursor cerrado");
-
-        // Configurar el adaptador del RecyclerView
-        adapter = new CategoriaAdapter(categorias);
-        recyclerView.setAdapter(adapter);
-        Log.i(TAG, "initRecyclerView: Adaptador configurado con " + categorias.size() + " categorías");
-    }
 }

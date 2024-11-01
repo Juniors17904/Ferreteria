@@ -19,7 +19,11 @@ public class DetallePedidoDAO {
 
     // Constructor que inicializa la conexión a la base de datos
     public DetallePedidoDAO(Context context) {
-        db = new ConectaDB(context).getWritableDatabase();
+        db = new ConectaDB(context,
+                ConstantesApp.BDD,
+                null,
+                ConstantesApp.VERSION).
+                getWritableDatabase();
     }
 
     // Método para insertar un nuevo detalle de pedido en la base de datos

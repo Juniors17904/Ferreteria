@@ -1,7 +1,9 @@
 package com.example.ferreteria.servicios;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
+import com.example.ferreteria.modelo.dao.CategoriaDAO;
 import com.example.ferreteria.modelo.dto.Categoria;
 
 import java.io.BufferedReader;
@@ -21,31 +24,54 @@ public class ConectaDB extends SQLiteOpenHelper {
 
     private final Context context;
     private  String TAG = "CONECTADB";
-    public ConectaDB(@Nullable Context context) {
-        super(context, ConstantesApp.BDD, null, ConstantesApp.VERSION);
-        this.context = context;
-        Log.i(TAG, "Inicializando base de datos");
+    private SQLiteDatabase db;
+
+    // Constructor
+    public ConectaDB(
+            @Nullable Context context,                         // 1. Contexto de la aplicación o actividad que está utilizando la base de datos
+            @Nullable String name,                             // 2. Nombre de la base de datos
+            @Nullable SQLiteDatabase.CursorFactory factory,    // 3. Fábrica de cursores (puedes dejarlo como null)
+            int version)                                       // 4. Versión de la base de datos
+    {
+        super(context, name, factory, version);
+        this.context = context; // Inicializar el context
     }
+
+    public SQLiteDatabase abrir() {
+        if (db == null || !db.isOpen()) {
+            db = getWritableDatabase();
+        }
+        return db;
+    }
+
+    public void cerrar() {
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
+    }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i(TAG, "Inicializando ONCREATE");
         try {
             // Crear todas las tablas
+            db.execSQL(ConstantesApp.TABLA_CLIENTES_DDL);
+            Log.i(TAG, "Tabla clientes creada");
             db.execSQL(ConstantesApp.TABLA_CATEGORIAS_DDL);
             Log.i(TAG, "Tabla categorias creada");
-
             db.execSQL(ConstantesApp.TABLA_PRODUCTOS_DDL);
+            Log.i(TAG, "Tabla productos creada");
             db.execSQL(ConstantesApp.TABLA_PEDIDOS_DDL);
-            db.execSQL(ConstantesApp.TABLA_CLIENTES_DDL);
+            Log.i(TAG, "Tabla pedidos creada");
             db.execSQL(ConstantesApp.TABLA_DETALLES_PEDIDOS_DDL);
-
-            // Log de creación exitosa
-            Log.i(TAG, "Todas las tablas fueron creadas correctamente");
-
-            // Insertar todas las categorías
+            Log.i(TAG, "Tabla detalles_pedidos creada");
+            Log.i(TAG, "------------------------------------------");
+            Log.i(TAG, "-------ejecutar metodos para insertar ----- ");
             insertarCategorias(db);
-            Log.i(TAG, "Todas las categorias fueron agregadas correctamente");
+            Log.i(TAG, "Todas las categorias fueron insertados");
+            insertarProductos(db);
+            Log.d(TAG, "Todos los productos insertados");
 
 
         } catch (Exception e) {
@@ -71,81 +97,6 @@ public class ConectaDB extends SQLiteOpenHelper {
         }
     }
 
-    public void ejecutarSQLDesdeArchivo(SQLiteDatabase db, String archivo) {
-        Log.i(TAG, "LEYENDO EJECUTARSQL");
-        try (InputStream is = context.getAssets().open(archivo);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-
-            StringBuilder sql = new StringBuilder();
-            String linea;
-
-            while ((linea = reader.readLine()) != null) {
-                sql.append(linea);
-                // Ejecutar cada sentencia SQL al final de un comando SQL
-                if (linea.trim().endsWith(";")) {
-                    db.execSQL(sql.toString());
-                    Log.i(TAG, "Ejecutando SQL: " + sql.toString().trim());
-                    sql.setLength(0); // Limpiar el StringBuilder
-                }
-            }
-            Log.i(TAG, "Archivo SQL " + archivo + " ejecutado correctamente");
-        } catch (Exception e) {
-            Log.e(TAG, "Error al ejecutar el archivo SQL " + archivo + ": " + e.getMessage());
-        }
-    }
-
-    public void listarTablas() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                String tableName = cursor.getString(0);
-                Log.i(TAG, "Tabla: " + tableName);
-
-                // Mostrar las columnas de cada tabla
-                Cursor columnsCursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
-                if (columnsCursor.moveToFirst()) {
-                    do {
-                        String columnName = columnsCursor.getString(1);
-                        String columnType = columnsCursor.getString(2);
-                        Log.i(TAG, "   Columna: " + columnName + " Tipo: " + columnType);
-                    } while (columnsCursor.moveToNext());
-                }
-                columnsCursor.close();
-
-            } while (cursor.moveToNext());
-        } else {
-            Log.i(TAG, "No se encontraron tablas en la base de datos.");
-        }
-        cursor.close();
-    }
-
-    public List<Categoria> leerCategorias() {
-        List<Categoria> categorias = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Log.i(TAG, "Leyendo categorías desde la base de datos");
-
-        Cursor cursor = db.rawQuery("SELECT id, nombre, descripcion, imagen FROM " + ConstantesApp.TABLA_CATEGORIAS, null);
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(0);
-                String nombre = cursor.getString(1);
-                String descripcion = cursor.getString(2);
-                int imagen = cursor.getInt(3);
-                categorias.add(new Categoria(id, nombre, descripcion, imagen));
-                Log.i(TAG, "Categoría leída - ID: " + id + ", Nombre: " + nombre);
-            } while (cursor.moveToNext());
-        } else {
-            Log.i(TAG, "No se encontraron categorías en la base de datos.");
-        }
-
-        cursor.close();
-        Log.i(TAG, "Lectura de categorías finalizada. Total categorías: " + categorias.size());
-
-        return categorias;
-    }
-
     private void insertarCategorias(SQLiteDatabase db) {
         Log.i(TAG, "Insertando categorías...");
 
@@ -157,7 +108,6 @@ public class ConectaDB extends SQLiteOpenHelper {
                 {"Electricidad", "Artículos eléctricos esenciales para instalaciones seguras.", "electricidad.png"},
                 {"Fontanería", "Materiales de fontanería, incluyendo tuberías y grifos.", "fontaneria.png"},
                 {"Jardinería", "Suministros y equipos para el cuidado del jardín.", "jardineria.png"}
-
         };
 
         // Ejecutar inserciones
@@ -165,9 +115,18 @@ public class ConectaDB extends SQLiteOpenHelper {
             // Obtener el ID de la imagen desde los recursos
             int imagenId = context.getResources().getIdentifier(categoria[2].replace(".png", ""), "drawable", context.getPackageName());
 
-            String sql = "INSERT INTO " + ConstantesApp.TABLA_CATEGORIAS + " (nombre, descripcion, imagen) VALUES (?, ?, ?)";
-            db.execSQL(sql, new Object[]{categoria[0], categoria[1], imagenId});
-            Log.i(TAG, "Categoría insertada: " + categoria[0]);
+            // Usar ContentValues para insertar
+            ContentValues valores = new ContentValues();
+            valores.put("nombre", categoria[0]);
+            valores.put("descripcion", categoria[1]);
+            valores.put("imagen", imagenId);
+
+            try {
+                db.insertOrThrow(ConstantesApp.TABLA_CATEGORIAS, null, valores);
+                Log.i(TAG, "Categoría insertada: " + categoria[0]);
+            } catch (SQLException e) {
+                Log.e(TAG, "Error al insertar categoría " + categoria[0] + ": " + e.getMessage());
+            }
         }
 
         Log.i(TAG, "Todas las categorías fueron insertadas correctamente.");
@@ -184,14 +143,12 @@ public class ConectaDB extends SQLiteOpenHelper {
                 {"Cinta métrica", "Cinta métrica de 5 metros.", "8.25", "200", "1", "cinta_metrica.png"},
                 {"Sierra", "Sierra manual para cortar madera.", "22.00", "30", "1", "sierra.png"},
                 {"Alicate", "Alicate multiusos de 8 pulgadas.", "12.00", "80", "1", "alicate.png"},
-
                 // Categoría 2
-                {"Cemento", "Cemento Portland de alta resistencia.", "5.00", "500", "2", "cemento.png"},
+                {"Cemento", "Cemento Wari de alta resistencia.", "5.00", "500", "2", "cemento.png"},
                 {"Ladrillos", "Ladrillos de construcción, 10 unidades.", "50.00", "300", "2", "ladrillos.png"},
                 {"Arena", "Arena de construcción, 1 m3.", "40.00", "200", "2", "arena.png"},
                 {"Piedra", "Piedra de río, 1 m3.", "30.00", "150", "2", "piedra.png"},
                 {"Yeso", "Yeso blanco de secado rápido para acabados interiores.", "28.00", "120", "2", "yeso.png"},
-
 
                 // Categoría 3
                 {"Pintura acrílica", "Pintura acrílica de 1 litro.", "15.00", "75", "3", "pintura_acrilica.png"},
@@ -205,12 +162,12 @@ public class ConectaDB extends SQLiteOpenHelper {
                 {"Toma corriente", "Toma corriente de 3 salidas.", "5.00", "150", "4", "toma_corriente.png"},
                 {"Cable eléctrico", "Cable eléctrico de 10 metros.", "10.00", "100", "4", "cable.png"},
                 {"Interruptor", "Interruptor de luz sencillo.", "2.50", "250", "4", "interruptor.png"},
-                {"Regulador", "Regulador de voltaje 1000VA.", "35.00", "30", "4", "regulador.png"},
+                {"LLave Termomagnetica", "LLave de voltaje 1000VA.", "35.00", "30", "4", "llave.png"},
 
                 // Categoría 5
                 {"Tubería PVC", "Tubería PVC de 2 pulgadas.", "7.00", "200", "5", "tuberia.png"},
-                {"Grifo", "Grifo de cocina de acero inoxidable.", "40.00", "50", "5", "grifo.png"},
-                {"Codo PVC", "Codo PVC de 2 pulgadas.", "2.00", "300", "5", "codo_pvc.png"},
+                {"Grifo", "Grifo de cocina de acero inoxidable.", "40.00", "50", "5", "canio.png"},
+                {"Codo PVC", "Codo PVC de 1 pulgada.", "2.00", "300", "5", "codo_pvc.png"},
                 {"Válvula", "Válvula de cierre para tuberías.", "15.00", "150", "5", "valvula.png"},
                 {"Cinta de teflón", "Cinta de teflón para sellar roscas.", "1.50", "400", "5", "cinta_teflon.png"},
 
@@ -227,9 +184,21 @@ public class ConectaDB extends SQLiteOpenHelper {
             // Obtener el ID de la imagen desde los recursos
             int imagenId = context.getResources().getIdentifier(producto[5].replace(".png", ""), "drawable", context.getPackageName());
 
-            String sql = "INSERT INTO " + ConstantesApp.TABLA_PRODUCTOS + " (nombre, descripcion, precio, stock, categoriaId, imagen) VALUES (?, ?, ?, ?, ?, ?)";
-            db.execSQL(sql, new Object[]{producto[0], producto[1], producto[2], producto[3], producto[4], imagenId});
-            Log.i(TAG, "Producto insertado: " + producto[0]);
+            // Usar ContentValues para insertar
+            ContentValues valores = new ContentValues();
+            valores.put("nombre", producto[0]);
+            valores.put("descripcion", producto[1]);
+            valores.put("precio", producto[2]);
+            valores.put("stock", producto[3]);
+            valores.put("categoriaId", producto[4]);
+            valores.put("imagen", imagenId);
+
+            try {
+                db.insertOrThrow(ConstantesApp.TABLA_PRODUCTOS, null, valores);
+                Log.i(TAG, "Producto insertado: " + producto[0]);
+            } catch (SQLException e) {
+                Log.e(TAG, "Error al insertar producto " + producto[0] + ": " + e.getMessage());
+            }
         }
 
         Log.i(TAG, "Todos los productos fueron insertados correctamente.");

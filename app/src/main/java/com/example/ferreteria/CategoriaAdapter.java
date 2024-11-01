@@ -27,8 +27,8 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     @NonNull
     @Override
     public CategoriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_categoria, parent, false);
         Log.i(TAG, "onCreateViewHolder: Creando nueva vista para el elemento de categoría.");
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_categoria, parent, false);
         return new CategoriaViewHolder(view);
     }
 
@@ -43,7 +43,6 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
 
     @Override
     public int getItemCount() {
-        Log.i(TAG, "getItemCount: Total de categorías: " + categorias.size());
         return categorias.size();
     }
 

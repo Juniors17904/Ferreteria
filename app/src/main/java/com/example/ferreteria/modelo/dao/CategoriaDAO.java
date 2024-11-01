@@ -1,47 +1,34 @@
 package com.example.ferreteria.modelo.dao;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
 import com.example.ferreteria.interfaces.ConstantesApp;
 import com.example.ferreteria.modelo.dto.Categoria;
 import com.example.ferreteria.servicios.ConectaDB;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriaDAO {
+
     private SQLiteDatabase db;
+    private  String TAG = "CategoriaDAO";
+
+
 
     // Constructor que inicializa la conexión a la base de datos
     public CategoriaDAO(Context context) {
-        Log.i("CategoriaDAO", "leyendo conectadb");
-        db = new ConectaDB(context).getWritableDatabase();
+        db = new ConectaDB(context,
+                ConstantesApp.BDD,
+                null,
+                ConstantesApp.VERSION).
+                getWritableDatabase();
+
     }
 
-    // Método para insertar una nueva categoría
-    public String insertar(Categoria categoria) {
-        String resp = "";
-        ContentValues registro = new ContentValues();
-        registro.put("nombre", categoria.getNombre()); // Cambiado a "nombre" en minúsculas
-        registro.put("descripcion", categoria.getDescripcion()); // Añadido campo descripción
-        registro.put("imagen", categoria.getImagen()); // Añadido campo imagen
 
-        try {
-            db.insertOrThrow(ConstantesApp.TABLA_CATEGORIAS, null, registro);
-            Log.i("CategoriaDAO", "Categoría insertada: " + categoria.getNombre());
-        } catch (SQLException ex) {
-            resp = ex.getMessage();
-            Log.e("CategoriaDAO", "Error al insertar categoría: " + resp);
-        }
-        return resp;
-    }
-
-    // Método para obtener una lista de todas las categorías
+    // obtener una lista de todas las categorías
     public List<Categoria> getList() {
         List<Categoria> lista = new ArrayList<>();
         String cadSQL = "SELECT * FROM " + ConstantesApp.TABLA_CATEGORIAS + ";";
@@ -70,5 +57,13 @@ public class CategoriaDAO {
 
         Log.i("CategoriaDAO", "Número total de categorías obtenidas: " + lista.size());
         return lista;
+    }
+
+
+    public void closeDB() {
+        if (db != null && db.isOpen()) {
+            db.close();
+            Log.i(TAG, "Base de datos cerrada");
+        }
     }
 }

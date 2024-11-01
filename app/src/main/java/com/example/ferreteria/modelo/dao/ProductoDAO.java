@@ -19,7 +19,11 @@ public class ProductoDAO {
 
     // Constructor que inicializa la conexión a la base de datos
     public ProductoDAO(Context context) {
-        db = new ConectaDB(context).getWritableDatabase();
+        db = new ConectaDB(context,
+                ConstantesApp.BDD,
+                null,
+                ConstantesApp.VERSION).
+                getWritableDatabase();
     }
 
     // Método para insertar un nuevo producto en la base de datos

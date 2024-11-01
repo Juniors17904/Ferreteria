@@ -19,7 +19,11 @@ import java.util.List;
 
     // Constructor que inicializa la conexión a la base de datos
     public ClienteDAO(Context context) {
-    db = new ConectaDB(context).getWritableDatabase();
+        db = new ConectaDB(context,
+                ConstantesApp.BDD,
+                null,
+                ConstantesApp.VERSION).
+                getWritableDatabase();
 }
 
     // Método para insertar una nueva cliente
