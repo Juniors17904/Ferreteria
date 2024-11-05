@@ -93,8 +93,8 @@ public class ConectaDB extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_PEDIDOS + ";");
             db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_CATEGORIAS + ";");
             db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_PRODUCTOS + ";");
+            db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_OFERTAS + ";");
 
-            // Crear tablas de nuevo
             onCreate(db);
             Log.i(TAG, "Actualización de base de datos realizada correctamente");
         } catch (Exception e) {
