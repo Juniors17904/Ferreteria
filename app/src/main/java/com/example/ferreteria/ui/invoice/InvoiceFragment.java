@@ -1,4 +1,4 @@
-package com.example.ferreteria.ui.gallery;
+package com.example.ferreteria.ui.invoice;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,20 +10,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.ferreteria.databinding.FragmentGalleryBinding;
 
-public class GalleryFragment extends Fragment {
+public class InvoiceFragment extends Fragment {
 
 private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        InvoiceViewModel invoiceViewModel =
+                new ViewModelProvider(this).get(InvoiceViewModel.class);
 
     binding = FragmentGalleryBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
         final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        invoiceViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

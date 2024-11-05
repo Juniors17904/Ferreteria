@@ -13,7 +13,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.splash_screen);
 
         // Duración del splash screen en milisegundos
-        int splashTime = 1000; // 3 segundos
+        int splashTime = 3000; // 3 segundos
 
         new Handler().postDelayed(new Runnable() {
             @Override

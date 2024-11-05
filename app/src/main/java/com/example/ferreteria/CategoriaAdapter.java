@@ -1,5 +1,6 @@
 package com.example.ferreteria;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.util.Log; // Importar Log
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ferreteria.interfaces.RecyclerViewItemListener;
 import com.example.ferreteria.modelo.dto.Categoria;
 
 import java.util.List;
@@ -17,10 +19,12 @@ import java.util.List;
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder> {
 
     private List<Categoria> categorias;
+    private RecyclerViewItemListener listener;
     private static final String TAG = "CategoriaAdapter";
 
-    public CategoriaAdapter(List<Categoria> categorias) {
+    public CategoriaAdapter(List<Categoria> categorias, RecyclerViewItemListener listener) {
         this.categorias = categorias;
+        this.listener = listener;
         Log.i(TAG, "Adaptador de categorías inicializado con " + categorias.size() + " categorías.");
     }
 
@@ -33,11 +37,21 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoriaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoriaViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Categoria categoria = categorias.get(position);
         holder.nombreTextView.setText(categoria.getNombre());
         holder.descripcionTextView.setText(categoria.getDescripcion());
         holder.imagenImageView.setImageResource(categoria.getImagen());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClicked(categoria);
+                }
+            }
+        });
+
         Log.i(TAG, "onBindViewHolder: Asociando datos a la posición " + position + ", Categoría: " + categoria.getNombre());
     }
 
@@ -55,6 +69,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
             imagenImageView = itemView.findViewById(R.id.imagenCategoria);
             nombreTextView = itemView.findViewById(R.id.nombreCategoria);
             descripcionTextView = itemView.findViewById(R.id.descripcionCategoria);
+
             Log.i(TAG, "CategoriaViewHolder: Vista del elemento de categoría inicializada.");
         }
     }
