@@ -8,16 +8,14 @@ public class Categoria {
     private String descripcion; // Campo para la descripción
     private int imagen; // Campo para la imagen
 
-    // Constructor por defecto
     public Categoria() {
     }
 
-    // Constructor con parámetros
     public Categoria(int id, String nombre, String descripcion, int imagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.imagen = imagen; // Inicializa el campo imagen
+        this.imagen = imagen;
     }
 
     // Getters y Setters
@@ -56,6 +54,6 @@ public class Categoria {
     @NonNull
     @Override
     public String toString() {
-        return getNombre(); // Retorna el nombre para mostrar en una lista
+        return getNombre();
     }
 }

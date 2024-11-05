@@ -1,8 +1,7 @@
 package com.example.ferreteria.ui.home;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,22 +13,31 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ferreteria.CategoriaAdapter;
+import com.example.ferreteria.OfertasAdapter;
 import com.example.ferreteria.R;
 import com.example.ferreteria.databinding.FragmentHomeBinding;
-import com.example.ferreteria.interfaces.ConstantesApp;
 import com.example.ferreteria.modelo.dao.CategoriaDAO;
+import com.example.ferreteria.modelo.dao.OfertaDAO;
 import com.example.ferreteria.modelo.dto.Categoria;
-import com.example.ferreteria.servicios.ConectaDB;
+import com.example.ferreteria.modelo.dto.Oferta;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private RecyclerView recyclerView;
-    private CategoriaAdapter adapter;
+    private RecyclerView recyclerCat, recyclerOfe;
+    private CategoriaAdapter catAdapter;
+    private OfertasAdapter ofAdapter;
     private List<Categoria> categorias;
     private static final String TAG = "HOME FRAGMENT";
+    private Handler handler;
+    private Timer timer;
+    private int positionOfe = 0;
+    private int directionOfe = 1;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView iniciado");
@@ -37,14 +45,31 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         // Configurar el RecyclerView
-        recyclerView = root.findViewById(R.id.recyclerViewCategorias);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerCat = root.findViewById(R.id.recyclerViewCategorias);
+        recyclerCat.setLayoutManager(new LinearLayoutManager(getContext()));
         Log.d(TAG, "RecyclerView configurado con LinearLayoutManager");
 
-        // Obtener y configurar el adaptador con la lista de categorías
-        confRecyclerView();
+        // Configurar el RecyclerView para ofertas
+        recyclerOfe = root.findViewById(R.id.recyclerViewOferta);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerOfe.setLayoutManager(layoutManager);
+
+
+
+        reciclerCat();
+        reciclerOf();
+        inicioAutoScroll();
 
         return root;
+    }
+
+    private void reciclerOf() {
+        OfertaDAO ofertaDAO = new OfertaDAO(getContext());
+        List<Oferta> ofertas = ofertaDAO.getListOfertas();
+        ofAdapter = new OfertasAdapter(ofertas);
+        recyclerOfe.setAdapter(ofAdapter);
+        Log.d(TAG, "Adaptador de ofertas configurado con " + ofertas.size() + " ofertas");
+        ofertaDAO.closeDB();
     }
 
     @Override
@@ -54,14 +79,38 @@ public class HomeFragment extends Fragment {
         Log.i(TAG, "onDestroyView llamado y binding establecido a null");
     }
 
-    private void confRecyclerView() {
+    private void reciclerCat() {
         CategoriaDAO categoriaDAO = new CategoriaDAO(getContext());
-        List<Categoria> categorias = categoriaDAO.getList(); // Obtener categorías desde CategoriaDAO
-        adapter = new CategoriaAdapter(categorias);
-        recyclerView.setAdapter(adapter);
+        List<Categoria> categorias = categoriaDAO.getListCat();
+        catAdapter = new CategoriaAdapter(categorias);
+        recyclerCat.setAdapter(catAdapter);
         Log.d(TAG, "Adaptador del RecyclerView configurado con " + categorias.size() + " categorías");
-        categoriaDAO.closeDB(); // Cerrar la base de datos
+        categoriaDAO.closeDB();
     }
 
+    private void inicioAutoScroll() {
+        handler = new Handler();
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (recyclerOfe != null) {
+                            // Mover hacia adelante o hacia atrás
+                            if (positionOfe >= ofAdapter.getItemCount() - 1) {
+                                directionOfe = -1; // Cambiar dirección a hacia atrás
+                            } else if (positionOfe <= 0) {
+                                directionOfe = 1; // Cambiar dirección a hacia adelante
+                            }
 
+                            positionOfe += directionOfe; // Actualizar posición
+                            recyclerOfe.smoothScrollToPosition(positionOfe); // Desplazamiento suave
+                        }
+                    }
+                });
+            }
+        }, 2500, 2500); // Desplazarse cada 1.8 segundos
+    }
 }

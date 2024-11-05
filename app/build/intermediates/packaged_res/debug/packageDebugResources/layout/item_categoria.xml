@@ -9,7 +9,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/imagenCategoria"
+        android:id="@+id/imagenOf"
         android:layout_width="106dp"
         android:layout_height="108dp"
         android:background="@drawable/rounded_corners"
@@ -24,7 +24,7 @@
         android:paddingStart="16dp">
 
         <TextView
-            android:id="@+id/nombreCategoria"
+            android:id="@+id/marcaOf"
             android:layout_width="261dp"
             android:layout_height="37dp"
             android:text="Nombre"
@@ -32,7 +32,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/descripcionCategoria"
+            android:id="@+id/precio"
             android:layout_width="261dp"
             android:layout_height="70dp"
             android:text="Descripción" />

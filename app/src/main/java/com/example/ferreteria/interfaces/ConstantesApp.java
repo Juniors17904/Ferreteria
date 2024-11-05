@@ -18,7 +18,7 @@ public interface ConstantesApp {
     String TABLA_PRODUCTOS = "productos";
     String TABLA_PRODUCTOS_DDL = "CREATE TABLE productos (\n" +
             "    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,\n" +
-            "    nombre VARCHAR(60) UNIQUE NOT NULL,\n" +
+            "    marca VARCHAR(60) NOT NULL,\n" +
             "    descripcion VARCHAR(150),\n" +
             "    precio NUMERIC(10, 2) NOT NULL,\n" +
             "    stock INTEGER NOT NULL,\n" +

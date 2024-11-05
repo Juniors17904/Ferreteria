@@ -3100,7 +3100,7 @@ drawable ic_search_black_24
 drawable indeterminate_static
 drawable interruptor
 drawable jardineria
-drawable ladrillo
+drawable ladrillos
 drawable llave
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3344,7 +3344,8 @@ id decor_content_parent
 id default_activity_button
 id deltaRelative
 id dependency_ordering
-id descripcionCategoria
+id descripcionOf
+id descuentoOf
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -3388,6 +3389,8 @@ id expand_activities_button
 id expanded_menu
 id fab
 id fade
+id fechaFinOferta
+id fechaInicioOferta
 id fill
 id fill_horizontal
 id fill_vertical
@@ -3426,7 +3429,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
-id imagenCategoria
+id imagenOf
 id immediateStop
 id included
 id indeterminate
@@ -3451,6 +3454,7 @@ id locale
 id ltr
 id m3_side_sheet
 id main
+id marcaOf
 id marquee
 id masked
 id match_constraint
@@ -3531,7 +3535,6 @@ id neverCompleteToEnd
 id neverCompleteToStart
 id noScroll
 id noState
-id nombreCategoria
 id none
 id normal
 id north
@@ -3572,6 +3575,8 @@ id percent
 id pin
 id position
 id postLayout
+id precio
+id precioDescuentoOf
 id pressed
 id progress_circular
 id progress_horizontal
@@ -3871,6 +3876,7 @@ layout fragment_slideshow
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_categoria
+layout item_oferta
 layout item_ofertas
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

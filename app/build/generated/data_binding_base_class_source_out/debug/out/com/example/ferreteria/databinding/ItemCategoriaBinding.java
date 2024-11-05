@@ -21,21 +21,20 @@ public final class ItemCategoriaBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final TextView descripcionCategoria;
+  public final ImageView imagenOf;
 
   @NonNull
-  public final ImageView imagenCategoria;
+  public final TextView marcaOf;
 
   @NonNull
-  public final TextView nombreCategoria;
+  public final TextView precio;
 
-  private ItemCategoriaBinding(@NonNull LinearLayout rootView,
-      @NonNull TextView descripcionCategoria, @NonNull ImageView imagenCategoria,
-      @NonNull TextView nombreCategoria) {
+  private ItemCategoriaBinding(@NonNull LinearLayout rootView, @NonNull ImageView imagenOf,
+      @NonNull TextView marcaOf, @NonNull TextView precio) {
     this.rootView = rootView;
-    this.descripcionCategoria = descripcionCategoria;
-    this.imagenCategoria = imagenCategoria;
-    this.nombreCategoria = nombreCategoria;
+    this.imagenOf = imagenOf;
+    this.marcaOf = marcaOf;
+    this.precio = precio;
   }
 
   @Override
@@ -65,26 +64,25 @@ public final class ItemCategoriaBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.descripcionCategoria;
-      TextView descripcionCategoria = ViewBindings.findChildViewById(rootView, id);
-      if (descripcionCategoria == null) {
+      id = R.id.imagenOf;
+      ImageView imagenOf = ViewBindings.findChildViewById(rootView, id);
+      if (imagenOf == null) {
         break missingId;
       }
 
-      id = R.id.imagenCategoria;
-      ImageView imagenCategoria = ViewBindings.findChildViewById(rootView, id);
-      if (imagenCategoria == null) {
+      id = R.id.marcaOf;
+      TextView marcaOf = ViewBindings.findChildViewById(rootView, id);
+      if (marcaOf == null) {
         break missingId;
       }
 
-      id = R.id.nombreCategoria;
-      TextView nombreCategoria = ViewBindings.findChildViewById(rootView, id);
-      if (nombreCategoria == null) {
+      id = R.id.precio;
+      TextView precio = ViewBindings.findChildViewById(rootView, id);
+      if (precio == null) {
         break missingId;
       }
 
-      return new ItemCategoriaBinding((LinearLayout) rootView, descripcionCategoria,
-          imagenCategoria, nombreCategoria);
+      return new ItemCategoriaBinding((LinearLayout) rootView, imagenOf, marcaOf, precio);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

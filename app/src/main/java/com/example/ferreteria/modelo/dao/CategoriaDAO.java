@@ -29,7 +29,7 @@ public class CategoriaDAO {
 
 
     // obtener una lista de todas las categorías
-    public List<Categoria> getList() {
+    public List<Categoria> getListCat() {
         List<Categoria> lista = new ArrayList<>();
         String cadSQL = "SELECT * FROM " + ConstantesApp.TABLA_CATEGORIAS + ";";
         Cursor c = db.rawQuery(cadSQL, null);
@@ -40,10 +40,10 @@ public class CategoriaDAO {
                 Log.i("CategoriaDAO", "Se encontraron registros en la tabla de categorías");
                 do {
                     Categoria categoria = new Categoria();
-                    categoria.setId(c.getInt(c.getColumnIndexOrThrow("id"))); // Cambiado a "id" en minúsculas
-                    categoria.setNombre(c.getString(c.getColumnIndexOrThrow("nombre"))); // Cambiado a "nombre" en minúsculas
-                    categoria.setDescripcion(c.getString(c.getColumnIndexOrThrow("descripcion"))); // Añadido para obtener descripción
-                    categoria.setImagen(c.getInt(c.getColumnIndexOrThrow("imagen"))); // Añadido para obtener imagen
+                    categoria.setId(c.getInt(c.getColumnIndexOrThrow("id")));
+                    categoria.setNombre(c.getString(c.getColumnIndexOrThrow("nombre")));
+                    categoria.setDescripcion(c.getString(c.getColumnIndexOrThrow("descripcion")));
+                    categoria.setImagen(c.getInt(c.getColumnIndexOrThrow("imagen")));
                     lista.add(categoria);
                     Log.i("CategoriaDAO", "Categoría agregada: " + categoria.getNombre());
                 } while (c.moveToNext());

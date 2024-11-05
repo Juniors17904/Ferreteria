@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.util.Log; // Importar Log
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +16,11 @@ import java.util.List;
 
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder> {
 
-    private List<Categoria> categorias;
+    private List<Categoria> listCategorias;
     private static final String TAG = "CategoriaAdapter";
 
     public CategoriaAdapter(List<Categoria> categorias) {
-        this.categorias = categorias;
+        this.listCategorias = categorias;
         Log.i(TAG, "Adaptador de categorías inicializado con " + categorias.size() + " categorías.");
     }
 
@@ -34,7 +34,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
 
     @Override
     public void onBindViewHolder(@NonNull CategoriaViewHolder holder, int position) {
-        Categoria categoria = categorias.get(position);
+        Categoria categoria = listCategorias.get(position);
         holder.nombreTextView.setText(categoria.getNombre());
         holder.descripcionTextView.setText(categoria.getDescripcion());
         holder.imagenImageView.setImageResource(categoria.getImagen());
@@ -43,7 +43,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
 
     @Override
     public int getItemCount() {
-        return categorias.size();
+        return listCategorias.size();
     }
 
     static class CategoriaViewHolder extends RecyclerView.ViewHolder {
@@ -52,9 +52,9 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
 
         CategoriaViewHolder(View itemView) {
             super(itemView);
-            imagenImageView = itemView.findViewById(R.id.imagenCategoria);
-            nombreTextView = itemView.findViewById(R.id.nombreCategoria);
-            descripcionTextView = itemView.findViewById(R.id.descripcionCategoria);
+            imagenImageView = itemView.findViewById(R.id.imagenOf);
+            nombreTextView = itemView.findViewById(R.id.marcaOf);
+            descripcionTextView = itemView.findViewById(R.id.precio);
             Log.i(TAG, "CategoriaViewHolder: Vista del elemento de categoría inicializada.");
         }
     }

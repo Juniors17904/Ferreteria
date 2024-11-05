@@ -30,7 +30,7 @@ public class ProductoDAO {
     public String insertar(Producto p) {
         String resp = "";
         ContentValues registro = new ContentValues();
-        registro.put("Nombre", p.getNombre());
+        registro.put("Marca", p.getMarca());
         registro.put("Descripcion", p.getDescripcion());
         registro.put("Precio", p.getPrecio());
         registro.put("Stock", p.getStock());
@@ -55,7 +55,7 @@ public class ProductoDAO {
                 do {
                     Producto p = new Producto();
                     p.setId(c.getInt(c.getColumnIndexOrThrow("Id")));
-                    p.setNombre(c.getString(c.getColumnIndexOrThrow("Nombre")));
+                    p.setMarca(c.getString(c.getColumnIndexOrThrow("Nombre")));
                     p.setDescripcion(c.getString(c.getColumnIndexOrThrow("Descripcion")));
                     p.setPrecio(c.getDouble(c.getColumnIndexOrThrow("Precio")));
                     p.setStock(c.getInt(c.getColumnIndexOrThrow("Stock")));
