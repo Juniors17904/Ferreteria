@@ -26,6 +26,33 @@ public class ProductoDAO {
                 getWritableDatabase();
     }
 
+    public List<Producto> buscarProductoPorCategoría(int categoriaId) {
+        List<Producto> productList = new ArrayList<>();
+        String query = "SELECT nombre, descripcion, precio, stock, imagen FROM "+ConstantesApp.TABLA_PRODUCTOS + " WHERE CategoriaId = ?;";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(categoriaId)});
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                    String descripcion = cursor.getString(cursor.getColumnIndexOrThrow("descripcion"));
+                    double precio = cursor.getDouble(cursor.getColumnIndexOrThrow("precio"));
+                    int stock = cursor.getInt(cursor.getColumnIndexOrThrow("stock"));
+                    int imagen = cursor.getInt(cursor.getColumnIndexOrThrow("imagen"));
+
+                    Producto producto = new Producto(nombre, descripcion, precio, stock, imagen);
+                    productList.add(producto);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            cursor.close();
+            db.close();
+        }
+
+        return productList;
+    }
+
     // Método para insertar un nuevo producto en la base de datos
     public String insertar(Producto p) {
         String resp = "";

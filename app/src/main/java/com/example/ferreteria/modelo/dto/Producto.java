@@ -8,6 +8,7 @@ public class Producto {
     private String descripcion; // Descripción del producto
     private double precio; // Precio del producto
     private int stock; // Stock disponible
+    private int imagen;
     private int categoriaId; // ID de la categoría a la que pertenece el producto
 
     public Producto() {
@@ -20,6 +21,14 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.categoriaId = categoriaId;
+    }
+
+    public Producto(String nombre, String descripcion, double precio, int stock, int imagen) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+        this.imagen = imagen;
     }
 
     public int getId() {
@@ -68,6 +77,14 @@ public class Producto {
 
     public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
     @NonNull

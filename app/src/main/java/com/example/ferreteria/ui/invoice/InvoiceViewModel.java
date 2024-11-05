@@ -1,16 +1,16 @@
-package com.example.ferreteria.ui.gallery;
+package com.example.ferreteria.ui.invoice;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class InvoiceViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public InvoiceViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is invoice fragment");
     }
 
     public LiveData<String> getText() {

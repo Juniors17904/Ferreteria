@@ -27,7 +27,6 @@ public class CategoriaDAO {
 
     }
 
-
     // obtener una lista de todas las categorías
     public List<Categoria> getList() {
         List<Categoria> lista = new ArrayList<>();

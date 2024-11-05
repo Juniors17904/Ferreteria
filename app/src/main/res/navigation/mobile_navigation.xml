@@ -13,8 +13,8 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.ferreteria.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:name="com.example.ferreteria.ui.invoice.InvoiceFragment"
+        android:label="@string/menu_invoice"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment

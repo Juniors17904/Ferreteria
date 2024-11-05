@@ -4,7 +4,7 @@
             "outputFile": "com.example.ferreteria.app-mergeDebugResources-43:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\libra\\.gradle\\caches\\transforms-4\\70301fd06b8784534c89c2ae3c7c4b43\\transformed\\material-1.12.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "C:\\Users\\JDLC\\.gradle\\caches\\transforms-4\\70301fd06b8784534c89c2ae3c7c4b43\\transformed\\material-1.12.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

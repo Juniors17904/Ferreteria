@@ -1,11 +1,10 @@
 package com.example.ferreteria;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -14,15 +13,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ferreteria.databinding.ActivityMenuBinding;
-import com.example.ferreteria.interfaces.ConstantesApp;
 import com.example.ferreteria.modelo.dto.Categoria;
-import com.example.ferreteria.servicios.ConectaDB;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
@@ -95,6 +90,4 @@ public class MenuActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-
 }
