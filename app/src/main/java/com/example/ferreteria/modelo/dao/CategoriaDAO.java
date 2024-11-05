@@ -28,7 +28,6 @@ public class CategoriaDAO {
     }
 
 
-    // obtener una lista de todas las categorías
     public List<Categoria> getListCat() {
         List<Categoria> lista = new ArrayList<>();
         String cadSQL = "SELECT * FROM " + ConstantesApp.TABLA_CATEGORIAS + ";";

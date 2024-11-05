@@ -35,9 +35,9 @@ public class OfertasAdapter extends RecyclerView.Adapter<OfertasAdapter.OfertaVi
         Oferta oferta = listOfertas.get(position);
         holder.marcaProductoTextView.setText(oferta.getMarcaProducto());
         holder.descripcionProductoTextView.setText(oferta.getDescripcionProducto());
-        holder.precioOriginalTextView.setText("Precio: $" + oferta.getPrecioOriginal());
+        holder.precioOriginalTextView.setText("Precio: S./" + oferta.getPrecioOriginal());
         holder.descuentoTextView.setText("Descuento: " + oferta.getDescuento() + "%");
-        holder.precioConDescuentoTextView.setText("Precio con descuento: $" + oferta.getPrecioConDescuento());
+        holder.precioConDescuentoTextView.setText("Precio con descuento: S./" + oferta.getPrecioConDescuento());
         holder.fechaInicioTextView.setText("Inicio: " + oferta.getFechaInicio());
         holder.fechaFinTextView.setText("Fin: " + oferta.getFechaFin());
         holder.imagenProductoImageView.setImageResource(oferta.getImagenProducto());
