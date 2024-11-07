@@ -17,7 +17,7 @@ import java.util.List;
 public class OfertasAdapter extends RecyclerView.Adapter<OfertasAdapter.OfertaViewHolder> {
 
     private List<Oferta> listOfertas;
-    private static final String TAG = "OfertasAdapter";
+    private static final String TAG = "-------OfertasAdapter";
 
     public OfertasAdapter(List<Oferta> ofertas) {
         this.listOfertas = ofertas;
@@ -26,7 +26,6 @@ public class OfertasAdapter extends RecyclerView.Adapter<OfertasAdapter.OfertaVi
     @NonNull
     @Override
     public OfertaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.i(TAG, "onCreateViewHolder: Creando nueva vista para el elemento de oferta.");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_oferta, parent, false);
         return new OfertaViewHolder(view);
     }
@@ -42,7 +41,6 @@ public class OfertasAdapter extends RecyclerView.Adapter<OfertasAdapter.OfertaVi
         holder.fechaFinTextView.setText("Fin: " + oferta.getFechaFin());
         holder.imagenProductoImageView.setImageResource(oferta.getImagenProducto());
 
-        Log.i(TAG, "onBindViewHolder: Asociando datos a la posición " + position + ", Producto: " + oferta.getMarcaProducto());
     }
     @Override
     public int getItemCount() {
@@ -64,7 +62,6 @@ public class OfertasAdapter extends RecyclerView.Adapter<OfertasAdapter.OfertaVi
             fechaInicioTextView = itemView.findViewById(R.id.fechaInicioOferta);
             fechaFinTextView = itemView.findViewById(R.id.fechaFinOferta);
 
-            Log.i(TAG, "OfertaViewHolder: Vista del elemento de oferta inicializada.");
         }
     }
 

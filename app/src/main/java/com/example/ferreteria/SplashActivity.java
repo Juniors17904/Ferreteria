@@ -3,25 +3,26 @@ package com.example.ferreteria;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
-
+    private String TAG = "SplashActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-        // Duración del splash screen en milisegundos
-        int splashTime = 1000; // 3 segundos
-
+        int splashTime = 1000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Iniciar la MainActivity después del splash screen
+                Log.i(TAG, "Inicio de SplashActivity");
+
                 Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
                 startActivity(intent);
-                finish(); // Finaliza la SplashActivity
+                finish();
             }
         }, splashTime);
 

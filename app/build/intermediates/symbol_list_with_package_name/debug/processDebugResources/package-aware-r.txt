@@ -3263,7 +3263,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_settings
+id action_search
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3520,7 +3520,7 @@ id nav_controller_view_tag
 id nav_gallery
 id nav_home
 id nav_host_fragment_container
-id nav_host_fragment_content_menu2
+id nav_host_fragment_content_menu
 id nav_slideshow
 id nav_view
 id navigation_bar_item_active_indicator_view
@@ -3877,7 +3877,6 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_categoria
 layout item_oferta
-layout item_ofertas
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

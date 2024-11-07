@@ -13,7 +13,7 @@ import java.util.List;
 public class OfertaDAO {
 
     private SQLiteDatabase db;
-    private final String TAG = "OfertaDAO";
+    private final String TAG = "-------OfertaDAO";
 
     // Constructor que inicializa la conexión a la base de datos
     public OfertaDAO(Context context) {
@@ -25,6 +25,7 @@ public class OfertaDAO {
     }
 
     public List<Oferta> getListOfertas() {
+        Log.i(TAG,"Obteniendo ofertas");
         List<Oferta> lista = new ArrayList<>();
         String cadSQL = "SELECT " +
                 "p.marca AS nombreProducto, " +
@@ -42,9 +43,8 @@ public class OfertaDAO {
         Cursor c = db.rawQuery(cadSQL, null);
 
         if (c != null) {
-            Log.i(TAG, "Cursor inicializado correctamente");
+           // Log.i(TAG, "Cursor inicializado correctamente");
             if (c.moveToFirst()) {
-                Log.i(TAG, "Se encontraron registros en la tabla de ofertas");
                 do {
                     Oferta oferta = new Oferta();
                     oferta.setMarcaProducto(c.getString(c.getColumnIndexOrThrow("nombreProducto")));
@@ -56,7 +56,7 @@ public class OfertaDAO {
                     oferta.setFechaFin(c.getString(c.getColumnIndexOrThrow("fechaFin")));
                     oferta.setImagenProducto(c.getInt(c.getColumnIndexOrThrow("imagenProducto")));
                     lista.add(oferta);
-                    Log.i(TAG, "Oferta agregada: " + oferta.getMarcaProducto());
+                    //Log.i(TAG, "Oferta agregada: " + oferta.getMarcaProducto());
                 } while (c.moveToNext());
             } else {
                 Log.i(TAG, "No se encontraron registros en la tabla de ofertas");
@@ -73,7 +73,7 @@ public class OfertaDAO {
     public void closeDB() {
         if (db != null && db.isOpen()) {
             db.close();
-            Log.i(TAG, "Base de datos cerrada");
+            //Log.i(TAG, "Base de datos cerrada");
         }
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder> {
 
     private List<Categoria> listCategorias;
-    private static final String TAG = "CategoriaAdapter";
+    private static final String TAG = "-------CategoriaAdapter";
 
     public CategoriaAdapter(List<Categoria> categorias) {
         this.listCategorias = categorias;
@@ -27,7 +27,6 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     @NonNull
     @Override
     public CategoriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.i(TAG, "onCreateViewHolder: Creando nueva vista para el elemento de categoría.");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_categoria, parent, false);
         return new CategoriaViewHolder(view);
     }
@@ -38,7 +37,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         holder.nombreTextView.setText(categoria.getNombre());
         holder.descripcionTextView.setText(categoria.getDescripcion());
         holder.imagenImageView.setImageResource(categoria.getImagen());
-        Log.i(TAG, "onBindViewHolder: Asociando datos a la posición " + position + ", Categoría: " + categoria.getNombre());
+        //Log.i(TAG, "onBindViewHolder: Asociando datos a la posición " + position + ", Categoría: " + categoria.getNombre());
     }
 
     @Override
@@ -55,7 +54,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
             imagenImageView = itemView.findViewById(R.id.imagenOf);
             nombreTextView = itemView.findViewById(R.id.marcaOf);
             descripcionTextView = itemView.findViewById(R.id.precio);
-            Log.i(TAG, "CategoriaViewHolder: Vista del elemento de categoría inicializada.");
+            //Log.i(TAG, "CategoriaViewHolder: Vista del elemento de categoría inicializada.");
         }
     }
 }

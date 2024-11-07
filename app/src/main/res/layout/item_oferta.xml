@@ -1,72 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:layout_marginStart="4dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="15dp"
     android:background="@drawable/rounded_corners"
-    android:orientation="horizontal"
-    android:padding="14dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/marcaOf"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Marca"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/descripcionOf"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Descripción" />
-
-        <TextView
-            android:id="@+id/precio"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Precio" />
-
-        <TextView
-            android:id="@+id/descuentoOf"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Descuento" />
-
-        <TextView
-            android:id="@+id/precioDescuentoOf"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Precio Con Descuento" />
-
-        <TextView
-            android:id="@+id/fechaInicioOferta"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Fecha Inicio" />
-
-        <TextView
-            android:id="@+id/fechaFinOferta"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Fecha fin" />
-
-        <ImageView
-            android:id="@+id/imagenOf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners"
-
-            android:foregroundGravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pinturas" />
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="0dp">
 
 
-    </LinearLayout>
-</LinearLayout>
+    <TextView
+        android:id="@+id/marcaOf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Marca"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descripcionOf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Descripción"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toBottomOf="@+id/marcaOf" />
+
+    <TextView
+        android:id="@+id/precio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Precio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toBottomOf="@+id/descripcionOf" />
+
+    <TextView
+        android:id="@+id/descuentoOf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Descuento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toBottomOf="@+id/precio" />
+
+    <TextView
+        android:id="@+id/precioDescuentoOf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Precio Con Descuento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toBottomOf="@+id/descuentoOf" />
+
+    <TextView
+        android:id="@+id/fechaInicioOferta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Fecha Inicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toBottomOf="@+id/precioDescuentoOf" />
+
+    <TextView
+        android:id="@+id/fechaFinOferta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="5dp"
+        android:text="Fecha fin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagenOf"
+        app:layout_constraintTop_toBottomOf="@+id/fechaInicioOferta" />
+
+    <ImageView
+        android:id="@+id/imagenOf"
+        android:layout_width="195dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_corners"
+        android:foregroundGravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pinturas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

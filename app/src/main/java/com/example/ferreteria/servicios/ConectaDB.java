@@ -24,7 +24,7 @@ import java.util.List;
 public class ConectaDB extends SQLiteOpenHelper {
 
     private final Context context;
-    private  String TAG = "CONECTADB";
+    private  String TAG = "CONECTADB----------";
     private SQLiteDatabase db;
 
     // Constructor
@@ -72,9 +72,7 @@ public class ConectaDB extends SQLiteOpenHelper {
             Log.i(TAG, "------------------------------------------");
             Log.i(TAG, "-------ejecutar metodos para insertar ----- ");
             insertarCategorias(db);
-            Log.i(TAG, "Todas las categorias fueron insertados");
             insertarProductos(db);
-            Log.d(TAG, "Todos los productos insertados");
             insertarOfertas(db);
 
 
@@ -128,13 +126,11 @@ public class ConectaDB extends SQLiteOpenHelper {
 
             try {
                 db.insertOrThrow(ConstantesApp.TABLA_CATEGORIAS, null, valores);
-                Log.i(TAG, "Categoría insertada: " + categoria[0]);
+               // Log.i(TAG, "Categoría insertada: " + categoria[0]);
             } catch (SQLException e) {
                 Log.e(TAG, "Error al insertar categoría " + categoria[0] + ": " + e.getMessage());
             }
-        }
-
-        Log.i(TAG, "Todas las categorías fueron insertadas correctamente.");
+        }Log.i(TAG,"Ofertas Insertadas"+(categorias.length));
     }
 
     private void insertarProductos(SQLiteDatabase db) {
@@ -202,7 +198,7 @@ public class ConectaDB extends SQLiteOpenHelper {
                 }
             }
 
-            Log.i(TAG, "Todos los productos fueron insertados correctamente.");
+            Log.i(TAG, "Productos Insertados "+ productos.length);
         }
 
     private void insertarOfertas(SQLiteDatabase db) {
@@ -231,7 +227,7 @@ public class ConectaDB extends SQLiteOpenHelper {
 
                 // Categoría: Jardinería
                 {"25", "12.0", "2024-12-01", "2024-12-10"}, // Producto: Maceta, Categoría: Jardinería
-                {"2 6", "18.0", "2024-12-05", "2024-12-15"}  // Producto: Tijeras de podar, Categoría: Jardinería
+                {"26", "18.0", "2024-12-05", "2024-12-15"}  // Producto: Tijeras de podar, Categoría: Jardinería
         };
         for (String[] oferta : ofertas) {
             ContentValues valores = new ContentValues();
@@ -242,11 +238,11 @@ public class ConectaDB extends SQLiteOpenHelper {
 
             try {
                 db.insertOrThrow(ConstantesApp.TABLA_OFERTAS, null, valores);
-                Log.i(TAG, "Oferta insertada para el producto ID: " + oferta[0]);
+                //Log.i(TAG, "Oferta insertada para el producto ID: " + oferta[0]);
             } catch (SQLException e) {
                 Log.e(TAG, "Error al insertar oferta para el producto ID " + oferta[0] + ": " + e.getMessage());
             }
-        }
+        }Log.i(TAG,"Ofertas Insertadas"+(ofertas.length));
     }
 
 }

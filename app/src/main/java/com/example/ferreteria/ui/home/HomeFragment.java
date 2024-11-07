@@ -31,12 +31,12 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerCat, recyclerOfe;
     private CategoriaAdapter catAdapter;
     private OfertasAdapter ofAdapter;
-    private List<Categoria> categorias;
-    private static final String TAG = "HOME FRAGMENT";
+    private static final String TAG = "-------HOME FRAGMENT";
     private Handler handler;
     private Timer timer;
     private int positionOfe = 0;
     private int directionOfe = 1;
+    private LinearLayoutManager layoutManager;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // Configurar el RecyclerView
+        Log.d(TAG, "RecyclerView CATEGORIAS");
         recyclerCat = root.findViewById(R.id.recyclerViewCategorias);
         recyclerCat.setLayoutManager(new LinearLayoutManager(getContext()));
-        Log.d(TAG, "RecyclerView configurado con LinearLayoutManager");
 
-        // Configurar el RecyclerView para ofertas
+
+        Log.d(TAG, "RecyclerView OFERTAS");
         recyclerOfe = root.findViewById(R.id.recyclerViewOferta);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerOfe.setLayoutManager(layoutManager);
 
 
@@ -98,19 +98,17 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void run() {
                         if (recyclerOfe != null) {
-                            // Mover hacia adelante o hacia atrás
                             if (positionOfe >= ofAdapter.getItemCount() - 1) {
-                                directionOfe = -1; // Cambiar dirección a hacia atrás
+                                directionOfe = -1;
                             } else if (positionOfe <= 0) {
-                                directionOfe = 1; // Cambiar dirección a hacia adelante
+                                directionOfe = 1;
                             }
-
-                            positionOfe += directionOfe; // Actualizar posición
-                            recyclerOfe.smoothScrollToPosition(positionOfe); // Desplazamiento suave
+                            positionOfe += directionOfe;
+                            recyclerOfe.smoothScrollToPosition(positionOfe);
                         }
                     }
                 });
             }
-        }, 2500, 2500); // Desplazarse cada 1.8 segundos
+        }, 2500, 2500);
     }
 }
