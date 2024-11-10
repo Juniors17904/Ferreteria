@@ -44,27 +44,43 @@ public class ProductoDAO {
         return resp;
     }
 
-    // Método para obtener una lista de productos de la base de datos
-    public List<Producto> getList() {
-        List<Producto> lista = new ArrayList<>();
-        String cadSQL = "SELECT Id, Nombre, Descripcion, Precio, Stock, CategoriaId FROM " + ConstantesApp.TABLA_PRODUCTOS + ";";
-        Cursor c = db.rawQuery(cadSQL, null);
 
-        if (c != null) {
-            if (c.moveToFirst()) {
+
+    public List<Producto> getProductosPorDescripcion(String descripcion) {
+        List<Producto> lista = new ArrayList<>();
+
+        String query = "SELECT " +
+                "p.marca AS nombreProducto, " +
+                "p.descripcion AS descripcionProducto, " +
+                "p.precio AS precioOriginal, " +
+                "CASE WHEN o.descuento IS NOT NULL THEN ROUND(p.precio * (1 - (o.descuento / 100.0)), 2) ELSE p.precio END AS precioConDescuento, " +
+                "CASE WHEN o.descuento IS NOT NULL THEN 1 ELSE 0 END AS tieneOferta, " +
+                "p.imagen AS imagenProducto " +
+                "FROM " + ConstantesApp.TABLA_PRODUCTOS + " p " +
+                "LEFT JOIN " + ConstantesApp.TABLA_OFERTAS + " o ON p.id = o.productoId " +
+                "WHERE (o.fechaFin IS NULL OR o.fechaFin >= DATE('now')) " +
+                "AND p.descripcion LIKE ?;";
+
+        String[] parametros = new String[]{"%" + descripcion + "%"}; // Parámetro para buscar en la descripción
+
+        Cursor cursor = db.rawQuery(query, parametros);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 do {
-                    Producto p = new Producto();
-                    p.setId(c.getInt(c.getColumnIndexOrThrow("Id")));
-                    p.setMarca(c.getString(c.getColumnIndexOrThrow("Nombre")));
-                    p.setDescripcion(c.getString(c.getColumnIndexOrThrow("Descripcion")));
-                    p.setPrecio(c.getDouble(c.getColumnIndexOrThrow("Precio")));
-                    p.setStock(c.getInt(c.getColumnIndexOrThrow("Stock")));
-                    p.setCategoriaId(c.getInt(c.getColumnIndexOrThrow("CategoriaId")));
-                    lista.add(p);
-                } while (c.moveToNext());
+                    Producto producto = new Producto();
+                    producto.setMarca(cursor.getString(cursor.getColumnIndexOrThrow("nombreProducto")));
+                    producto.setDescripcion(cursor.getString(cursor.getColumnIndexOrThrow("descripcionProducto")));
+                    producto.setPrecio(cursor.getDouble(cursor.getColumnIndexOrThrow("precioOriginal")));
+                    producto.setPrecioConDescuento(cursor.getDouble(cursor.getColumnIndexOrThrow("precioConDescuento")));
+                    producto.setTieneOferta(cursor.getInt(cursor.getColumnIndexOrThrow("tieneOferta")) == 1);
+                    producto.setImagenProducto(cursor.getInt(cursor.getColumnIndexOrThrow("imagenProducto")));
+                    lista.add(producto);
+                } while (cursor.moveToNext());
             }
-            c.close();
+            cursor.close();
         }
         return lista;
     }
+
 }

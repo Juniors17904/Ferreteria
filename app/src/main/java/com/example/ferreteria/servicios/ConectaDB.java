@@ -138,9 +138,9 @@ public class ConectaDB extends SQLiteOpenHelper {
 
             // Lista de productos a insertar, cada producto pertenece a una categoría
             String[][] productos = {
-                    // Categoría 1
+
                     {"Truper", "Destornillador plano de 6 pulgadas.", "10.50", "100", "1", "destornillador.png"},
-                    {"Stanley", "Martillo de acero de 16 oz.", "15.75", "50", "1", "martillo.png"},
+                    {"Stanley", "Martillo carpintero 16 Oz.", "15.75", "50", "1", "martillo.png"},
                     {"Stanley", "Cinta métrica de 5 metros.", "8.25", "200", "1", "cinta_metrica.png"},
                     {"Bahco", "Sierra manual para cortar madera.", "22.00", "30", "1", "sierra.png"},
                     {"Irwin", "Alicate multiusos de 8 pulgadas.", "12.00", "80", "1", "alicate.png"},
@@ -192,7 +192,7 @@ public class ConectaDB extends SQLiteOpenHelper {
 
                 try {
                     db.insertOrThrow(ConstantesApp.TABLA_PRODUCTOS, null, valores);
-                    Log.i(TAG, "Producto insertado: " + producto[0]);
+                    //Log.i(TAG, "Producto insertado: " + producto[0]);
                 } catch (SQLException e) {
                     Log.e(TAG, "Error al insertar producto " + producto[0] + ": " + e.getMessage());
                 }

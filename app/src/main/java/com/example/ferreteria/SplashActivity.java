@@ -7,8 +7,10 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ferreteria.ui.MenuActivity;
+
 public class SplashActivity extends AppCompatActivity {
-    private String TAG = "SplashActivity";
+    private String TAG = "----SplashActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

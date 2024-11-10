@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoriaDAO {
 
     private SQLiteDatabase db;
-    private  String TAG = "-------CategoriaDAO";
+    private  String TAG = "----CategoriaDAO";
 
 
     public CategoriaDAO(Context context) {
@@ -27,6 +27,7 @@ public class CategoriaDAO {
 
 
     public List<Categoria> getListCat() {
+        Log.i(TAG,"Obteniendo Categorias");
         List<Categoria> lista = new ArrayList<>();
         String cadSQL = "SELECT * FROM " + ConstantesApp.TABLA_CATEGORIAS + ";";
         Cursor c = db.rawQuery(cadSQL, null);

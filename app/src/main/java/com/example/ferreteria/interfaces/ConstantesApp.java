@@ -31,7 +31,7 @@ public interface ConstantesApp {
     String TABLA_OFERTAS_DDL = "CREATE TABLE ofertas (\n" +
             "    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,\n" +
             "    productoId INTEGER REFERENCES productos(id) NOT NULL,\n" +
-            "    descuento NUMERIC(5, 2) NOT NULL,\n" +
+            "    descuento NUMERIC(10, 2) NOT NULL,\n" +
             "    fechaInicio DATE NOT NULL,\n" +
             "    fechaFin DATE NOT NULL\n" +
             ");\n";

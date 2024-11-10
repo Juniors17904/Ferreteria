@@ -1,18 +1,42 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Colores definidos -->
+
+    <!-- Base application theme -->
     <style name="Base.Theme.Ferreteria" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Personaliza tu tema aquí -->
+        <item name="colorPrimary">@color/colorPrimary</item> <!-- Color de la barra -->
+        <item name="colorPrimaryDark">#12B300</item> <!-- Color del notch -->
+        <item name="colorAccent">@color/colorAccent</item> <!-- Color de acento -->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item> <!-- Color del status bar -->
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item> <!-- Color de la barra de navegación -->
     </style>
 
+    <!-- Tema principal -->
     <style name="Theme.Ferreteria" parent="Base.Theme.Ferreteria" />
 
+    <!-- Tema sin ActionBar (si es necesario) -->
     <style name="Theme.Ferreteria.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Ferreteria.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+
+    <!-- Otros temas (si es necesario) -->
+    <style name="Theme.Ferreteria.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Ferreteria.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Ferreteria.NoNotch">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
+
+
 </resources>

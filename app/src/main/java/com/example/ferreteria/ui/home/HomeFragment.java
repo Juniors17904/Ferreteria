@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ferreteria.CategoriaAdapter;
-import com.example.ferreteria.OfertasAdapter;
+import com.example.ferreteria.AdaptadorCategorias;
+import com.example.ferreteria.AdaptadorOfertas;
 import com.example.ferreteria.R;
 import com.example.ferreteria.databinding.FragmentHomeBinding;
 import com.example.ferreteria.modelo.dao.CategoriaDAO;
@@ -29,9 +29,9 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private RecyclerView recyclerCat, recyclerOfe;
-    private CategoriaAdapter catAdapter;
-    private OfertasAdapter ofAdapter;
-    private static final String TAG = "-------HOME FRAGMENT";
+    private AdaptadorCategorias catAdapter;
+    private AdaptadorOfertas ofAdapter;
+    private static final String TAG = "----HOME FRAGMENT";
     private Handler handler;
     private Timer timer;
     private int positionOfe = 0;
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
     private void reciclerOf() {
         OfertaDAO ofertaDAO = new OfertaDAO(getContext());
         List<Oferta> ofertas = ofertaDAO.getListOfertas();
-        ofAdapter = new OfertasAdapter(ofertas);
+        ofAdapter = new AdaptadorOfertas(ofertas);
         recyclerOfe.setAdapter(ofAdapter);
         Log.d(TAG, "Adaptador de ofertas configurado con " + ofertas.size() + " ofertas");
         ofertaDAO.closeDB();
@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
     private void reciclerCat() {
         CategoriaDAO categoriaDAO = new CategoriaDAO(getContext());
         List<Categoria> categorias = categoriaDAO.getListCat();
-        catAdapter = new CategoriaAdapter(categorias);
+        catAdapter = new AdaptadorCategorias(categorias);
         recyclerCat.setAdapter(catAdapter);
         Log.d(TAG, "Adaptador del RecyclerView configurado con " + categorias.size() + " categorías");
         categoriaDAO.closeDB();
@@ -109,6 +109,6 @@ public class HomeFragment extends Fragment {
                     }
                 });
             }
-        }, 2500, 2500);
+        }, 10000, 10000);
     }
 }

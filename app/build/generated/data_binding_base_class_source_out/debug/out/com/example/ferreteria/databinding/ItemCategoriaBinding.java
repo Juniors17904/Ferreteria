@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.ferreteria.R;
@@ -18,7 +18,7 @@ import java.lang.String;
 
 public final class ItemCategoriaBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final ImageView imagenOf;
@@ -29,7 +29,7 @@ public final class ItemCategoriaBinding implements ViewBinding {
   @NonNull
   public final TextView precio;
 
-  private ItemCategoriaBinding(@NonNull LinearLayout rootView, @NonNull ImageView imagenOf,
+  private ItemCategoriaBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imagenOf,
       @NonNull TextView marcaOf, @NonNull TextView precio) {
     this.rootView = rootView;
     this.imagenOf = imagenOf;
@@ -39,7 +39,7 @@ public final class ItemCategoriaBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -82,7 +82,7 @@ public final class ItemCategoriaBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemCategoriaBinding((LinearLayout) rootView, imagenOf, marcaOf, precio);
+      return new ItemCategoriaBinding((ConstraintLayout) rootView, imagenOf, marcaOf, precio);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
@@ -19,15 +20,34 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="title_activity_inicio">InicioActivity</string>
     <string name="title_activity_menu">MenuActivity</string>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
     <style name="Base.Theme.Ferreteria" parent="Theme.Material3.DayNight.NoActionBar">
         
-        
+        <item name="colorPrimary">@color/colorPrimary</item> 
+        <item name="colorPrimaryDark">#12B300</item> 
+        <item name="colorAccent">@color/colorAccent</item> 
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item> 
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item> 
     </style>
     <style name="Theme.Ferreteria" parent="Base.Theme.Ferreteria"/>
     <style name="Theme.Ferreteria.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="Theme.Ferreteria.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Ferreteria.NoNotch">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">#FFFFFF</item>
     </style>
     <style name="Theme.Ferreteria.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>

@@ -13,7 +13,7 @@ import java.util.List;
 public class OfertaDAO {
 
     private SQLiteDatabase db;
-    private final String TAG = "-------OfertaDAO";
+    private final String TAG = "----OfertaDAO";
 
     // Constructor que inicializa la conexión a la base de datos
     public OfertaDAO(Context context) {
@@ -32,7 +32,7 @@ public class OfertaDAO {
                 "p.descripcion AS descripcionProducto, " +
                 "p.precio AS precioOriginal, " +
                 "o.descuento AS descuento, " +
-                "(p.precio * (1 - o.descuento / 100)) AS precioConDescuento, " +
+                "ROUND(p.precio * (1 - (o.descuento / 100.0)), 2)AS precioConDescuento, " +
                 "o.fechaInicio, " +
                 "o.fechaFin, " +
                 "p.imagen AS imagenProducto " +

@@ -12,6 +12,10 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\rounded_corners.xml"
     },
     {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\menu_barra_contenedor.xml.flat",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\menu\\barra_contenedor.xml"
+    },
+    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_maceta.png.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\maceta.png"
     },
@@ -20,12 +24,12 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\cable.png"
     },
     {
-        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_jardineria.png.flat",
-        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\jardineria.png"
-    },
-    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_jardineria.png.flat",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\jardineria.png"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\layout_fragment_slideshow.xml.flat",
@@ -112,8 +116,12 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\cinta_metrica.png"
     },
     {
-        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\menu_menu.xml.flat",
-        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\menu\\menu.xml"
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\layout_item_producto.xml.flat",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\item_producto.xml"
+    },
+    {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\layout_activity_buscar.xml.flat",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\activity_buscar.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_fontaneria.png.flat",
@@ -122,10 +130,6 @@
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_cinta_teflon.png.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\cinta_teflon.png"
-    },
-    {
-        "merged": "com.example.ferreteria.app-debug-45:/layout_content_menu.xml.flat",
-        "source": "com.example.ferreteria.app-main-47:/layout/content_menu.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
@@ -168,10 +172,6 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\piedra.png"
     },
     {
-        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_ladrillo.png.flat",
-        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\ladrillo.png"
-    },
-    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_martillo.png.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\martillo.png"
     },
@@ -204,6 +204,10 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\cemento.png"
     },
     {
+        "merged": "com.example.ferreteria.app-debug-45:/layout_app_bar_menu.xml.flat",
+        "source": "com.example.ferreteria.app-main-47:/layout/app_bar_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_herramientas.png.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\herramientas.png"
     },
@@ -218,6 +222,10 @@
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_ic_menu_camera.xml.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\drawable\\ic_menu_camera.xml"
+    },
+    {
+        "merged": "com.example.ferreteria.app-debug-45:/layout_fragment_home.xml.flat",
+        "source": "com.example.ferreteria.app-main-47:/layout/fragment_home.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_guantes.png.flat",
@@ -254,10 +262,6 @@
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\navigation_mobile_navigation.xml.flat",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\navigation\\mobile_navigation.xml"
-    },
-    {
-        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\layout_item_ofertas.xml.flat",
-        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\item_ofertas.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-debug-45:\\drawable_sellador.png.flat",

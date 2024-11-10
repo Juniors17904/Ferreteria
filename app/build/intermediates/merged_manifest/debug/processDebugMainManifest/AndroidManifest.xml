@@ -25,11 +25,21 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Ferreteria" >
+
+        <!-- Actividad Menu -->
         <activity
-            android:name="com.example.ferreteria.MenuActivity"
+            android:name="com.example.ferreteria.ui.MenuActivity"
             android:exported="false"
             android:label="@string/title_activity_menu"
             android:theme="@style/Theme.Ferreteria.NoActionBar" />
+
+        <!-- Actividad Buscar -->
+        <activity
+            android:name="com.example.ferreteria.buscar_Activity"
+            android:exported="false"
+            android:theme="@style/Theme.Ferreteria.NoNotch" />
+
+        <!-- Actividad Splash -->
         <activity
             android:name="com.example.ferreteria.SplashActivity"
             android:exported="true" >
