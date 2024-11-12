@@ -1,10 +1,12 @@
-package com.example.ferreteria.ui;
+package com.example.ferreteria;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -13,8 +15,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.ferreteria.R;
-import com.example.ferreteria.buscar_Activity;
 import com.example.ferreteria.databinding.ActivityMenuBinding;
 
 public class MenuActivity extends AppCompatActivity {
@@ -34,7 +34,17 @@ public class MenuActivity extends AppCompatActivity {
         confBotonFlotante();
         confMenuLateral();
         confNavegacion();
+        
+
     }
+
+    public void iniciarSesion(View view) {
+        Log.i(TAG, "Iniciar Sesión clickeado");
+
+        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+        startActivity(intent); // Abre la actividad de inicio de sesión
+    }
+
 
     //---------------- Configura la barra de acción ----------------
     private void confBarraDeAccion() {
@@ -85,6 +95,7 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+
     }
 
     @Override

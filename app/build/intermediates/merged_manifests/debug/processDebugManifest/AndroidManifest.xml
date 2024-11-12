@@ -24,12 +24,15 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="com.example.ferreteria.LoginActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="com.example.ferreteria.ProductosActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
-        <!-- Actividad Menu -->
         <activity
-            android:name="com.example.ferreteria.ui.MenuActivity"
+            android:name="com.example.ferreteria.MenuActivity"
             android:exported="false"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme" />

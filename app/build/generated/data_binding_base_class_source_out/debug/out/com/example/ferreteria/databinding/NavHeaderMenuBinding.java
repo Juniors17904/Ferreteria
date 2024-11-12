@@ -22,7 +22,7 @@ public final class NavHeaderMenuBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button button;
+  public final Button btnIniciarSesion;
 
   @NonNull
   public final ImageView imageView;
@@ -33,10 +33,10 @@ public final class NavHeaderMenuBinding implements ViewBinding {
   @NonNull
   public final TextView textView4;
 
-  private NavHeaderMenuBinding(@NonNull ConstraintLayout rootView, @NonNull Button button,
+  private NavHeaderMenuBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnIniciarSesion,
       @NonNull ImageView imageView, @NonNull TextView textView, @NonNull TextView textView4) {
     this.rootView = rootView;
-    this.button = button;
+    this.btnIniciarSesion = btnIniciarSesion;
     this.imageView = imageView;
     this.textView = textView;
     this.textView4 = textView4;
@@ -69,9 +69,9 @@ public final class NavHeaderMenuBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button;
-      Button button = ViewBindings.findChildViewById(rootView, id);
-      if (button == null) {
+      id = R.id.btnIniciarSesion;
+      Button btnIniciarSesion = ViewBindings.findChildViewById(rootView, id);
+      if (btnIniciarSesion == null) {
         break missingId;
       }
 
@@ -93,8 +93,8 @@ public final class NavHeaderMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      return new NavHeaderMenuBinding((ConstraintLayout) rootView, button, imageView, textView,
-          textView4);
+      return new NavHeaderMenuBinding((ConstraintLayout) rootView, btnIniciarSesion, imageView,
+          textView, textView4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

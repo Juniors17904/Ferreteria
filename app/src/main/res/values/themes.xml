@@ -38,5 +38,18 @@
         <item name="android:windowBackground">#FFFFFF</item>
     </style>
 
+    <!-- Tema personalizado -->
+    <style name="nuevotema" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Personaliza los atributos según tus necesidades -->
+        <item name="colorPrimary">#FF5722</item>
+        <item name="colorPrimaryDark">#DCE619</item>
+        <item name="colorAccent">#FFC107</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+        <!-- Otros atributos opcionales -->
+    </style>
+
+
+
 
 </resources>

@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-        Log.i(TAG, "onDestroyView llamado y binding establecido a null");
+    //    Log.i(TAG, "HOME FRAGMENT");
     }
 
     private void reciclerCat() {

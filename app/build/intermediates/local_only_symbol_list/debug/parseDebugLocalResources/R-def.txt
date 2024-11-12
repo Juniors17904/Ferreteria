@@ -61,6 +61,7 @@ drawable yeso
 id app_bar_menu
 id boton_buscar
 id btnAgregarCarrito
+id btnIniciarSesion
 id button
 id descripcionOf
 id descuentoOf
@@ -100,6 +101,7 @@ id tvDescripcion
 id tvMarca
 id tvPrecio
 layout activity_buscar
+layout activity_login
 layout activity_menu
 layout activity_productos
 layout app_bar_menu
@@ -116,7 +118,12 @@ menu activity_inicio_drawer
 menu barra_contenedor
 navigation mobile_navigation
 string action_settings
+string action_sign_in
+string action_sign_in_short
 string app_name
+string invalid_password
+string invalid_username
+string login_failed
 string menu_gallery
 string menu_home
 string menu_slideshow
@@ -125,8 +132,12 @@ string nav_header_subtitle
 string nav_header_title
 string navigation_drawer_close
 string navigation_drawer_open
+string prompt_email
+string prompt_password
 string title_activity_inicio
+string title_activity_login
 string title_activity_menu
+string welcome
 style AppTheme
 style Base.Theme.Ferreteria
 style CustomButtonStyle
@@ -135,5 +146,6 @@ style Theme.Ferreteria.AppBarOverlay
 style Theme.Ferreteria.NoActionBar
 style Theme.Ferreteria.NoNotch
 style Theme.Ferreteria.PopupOverlay
+style nuevotema
 xml backup_rules
 xml data_extraction_rules

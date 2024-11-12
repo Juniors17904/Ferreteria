@@ -1,6 +1,7 @@
 package com.example.ferreteria.ui.slideshow;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +14,18 @@ import com.example.ferreteria.databinding.FragmentSlideshowBinding;
 public class SlideshowFragment extends Fragment {
 
 private FragmentSlideshowBinding binding;
-
+private String TAG = "----SLIDESSHOW";
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         SlideshowViewModel slideshowViewModel =
                 new ViewModelProvider(this).get(SlideshowViewModel.class);
+        Log.i(TAG, "-------");
+                   binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+                     View root = binding.getRoot();
 
-    binding = FragmentSlideshowBinding.inflate(inflater, container, false);
-    View root = binding.getRoot();
-
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+                   final TextView textView = binding.textSlideshow;
+                     slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+                      return root;
     }
 
 @Override
