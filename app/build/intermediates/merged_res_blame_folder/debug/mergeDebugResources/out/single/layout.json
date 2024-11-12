@@ -4,6 +4,10 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\activity_menu.xml"
     },
     {
+        "merged": "com.example.ferreteria.app-mergeDebugResources-44:/layout/item_producto.xml",
+        "source": "com.example.ferreteria.app-main-47:/layout/item_producto.xml"
+    },
+    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\fragment_gallery.xml",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\fragment_gallery.xml"
     },
@@ -50,10 +54,6 @@
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\fragment_slideshow.xml",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\fragment_slideshow.xml"
-    },
-    {
-        "merged": "com.example.ferreteria.app-mergeDebugResources-44:/layout/nav_header_menu.xml",
-        "source": "com.example.ferreteria.app-main-47:/layout/nav_header_menu.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\app_bar_menu.xml",

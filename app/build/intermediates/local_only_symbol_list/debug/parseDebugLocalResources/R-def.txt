@@ -72,7 +72,6 @@ id fechaFinOferta
 id fechaInicioOferta
 id imageView
 id imagenOf
-id img
 id ivImagen
 id main
 id marcaOf
@@ -100,9 +99,6 @@ id toolbar
 id tvDescripcion
 id tvMarca
 id tvPrecio
-id txtDesc
-id txtMarca
-id txtPrecio
 layout activity_buscar
 layout activity_menu
 layout activity_productos
@@ -114,7 +110,6 @@ layout fragment_slideshow
 layout item_categoria
 layout item_oferta
 layout item_producto
-layout item_productos_xcategoria
 layout nav_header_menu
 layout splash_screen
 menu activity_inicio_drawer

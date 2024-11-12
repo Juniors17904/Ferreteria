@@ -130,7 +130,7 @@ public class ConectaDB extends SQLiteOpenHelper {
             } catch (SQLException e) {
                 Log.e(TAG, "Error al insertar categoría " + categoria[0] + ": " + e.getMessage());
             }
-        }Log.i(TAG,"Ofertas Insertadas"+(categorias.length));
+        }Log.i(TAG,"Categorias Insertadas "+(categorias.length));
     }
 
     private void insertarProductos(SQLiteDatabase db) {
@@ -206,28 +206,28 @@ public class ConectaDB extends SQLiteOpenHelper {
 
         String[][] ofertas = {
                 // Categoría: Herramientas
-                {"1", "10.0", "2024-11-01", "2024-11-10"}, // Producto: Destornillador, Categoría: Herramientas
-                {"2", "15.0", "2024-11-05", "2024-11-15"}, // Producto: Martillo, Categoría: Herramientas
+                {"1", "10.0", "2024-11-01", "2024-12-10"}, // Producto: Destornillador, Categoría: Herramientas
+                {"2", "15.0", "2024-11-05", "2024-12-25"}, // Producto: Martillo, Categoría: Herramientas
 
                 // Categoría: Materiales
-                {"6", "8.0", "2024-11-10", "2024-11-20"},  // Producto: Cemento, Categoría: Materiales
-                {"7", "20.0", "2024-11-12", "2024-11-22"}, // Producto: Ladrillos, Categoría: Materiales
+                {"6", "8.0", "2024-11-10", "2024-12-20"},  // Producto: Cemento, Categoría: Materiales
+                {"7", "20.0", "2024-11-12", "2024-12-27"}, // Producto: Ladrillos, Categoría: Materiales
 
                 // Categoría: Pinturas
-                {"11", "25.0", "2024-11-15", "2024-11-25"}, // Producto: Pintura acrílica, Categoría: Pinturas
-                {"12", "30.0", "2024-11-18", "2024-11-28"}, // Producto: Brocha, Categoría: Pinturas
+                {"11", "25.0", "2024-11-15", "2024-12-25"}, // Producto: Pintura acrílica, Categoría: Pinturas
+                {"12", "30.0", "2024-11-18", "2024-12-28"}, // Producto: Brocha, Categoría: Pinturas
 
                 // Categoría: Eléctrico
-                {"16", "3.0", "2024-11-20", "2024-11-30"},  // Producto: Bombilla LED, Categoría: Eléctrico
-                {"17", "5.0", "2024-11-22", "2024-12-02"},  // Producto: Toma corriente, Categoría: Eléctrico
+                {"16", "3.0", "2024-11-20", "2024-12-29"},  // Producto: Bombilla LED, Categoría: Eléctrico
+                {"17", "5.0", "2024-11-22", "2024-12-30"},  // Producto: Toma corriente, Categoría: Eléctrico
 
                 // Categoría: Fontanería
-                {"21", "15.0", "2024-11-25", "2024-12-05"}, // Producto: Grifo, Categoría: Fontanería
-                {"22", "2.0", "2024-11-28", "2024-12-08"},  // Producto: Codo PVC, Categoría: Fontanería
+                {"21", "15.0", "2024-11-25", "2024-12-29"}, // Producto: Grifo, Categoría: Fontanería
+                {"22", "2.0", "2024-11-28", "2024-12-24"},  // Producto: Codo PVC, Categoría: Fontanería
 
                 // Categoría: Jardinería
-                {"25", "12.0", "2024-12-01", "2024-12-10"}, // Producto: Maceta, Categoría: Jardinería
-                {"26", "18.0", "2024-12-05", "2024-12-15"}  // Producto: Tijeras de podar, Categoría: Jardinería
+                {"25", "12.0", "2024-12-01", "2024-12-26"}, // Producto: Maceta, Categoría: Jardinería
+                {"26", "18.0", "2024-12-05", "2024-12-25"}  // Producto: Tijeras de podar, Categoría: Jardinería
         };
         for (String[] oferta : ofertas) {
             ContentValues valores = new ContentValues();
@@ -242,7 +242,7 @@ public class ConectaDB extends SQLiteOpenHelper {
             } catch (SQLException e) {
                 Log.e(TAG, "Error al insertar oferta para el producto ID " + oferta[0] + ": " + e.getMessage());
             }
-        }Log.i(TAG,"Ofertas Insertadas"+(ofertas.length));
+        }Log.i(TAG,"Ofertas Insertadas "+(ofertas.length));
     }
 
 }

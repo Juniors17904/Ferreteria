@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
         List<Categoria> categorias = categoriaDAO.getListCat();
         catAdapter = new AdaptadorCategorias(categorias);
         recyclerCat.setAdapter(catAdapter);
-        Log.d(TAG, "Adaptador del RecyclerView configurado con " + categorias.size() + " categorías");
+        Log.d(TAG, "Adaptador del categorias configurado con " + categorias.size() + " categorías");
         categoriaDAO.closeDB();
     }
 

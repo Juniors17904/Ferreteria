@@ -3440,7 +3440,6 @@ id ignoreRequest
 id image
 id imageView
 id imagenOf
-id img
 id immediateStop
 id included
 id indeterminate
@@ -3733,9 +3732,6 @@ id triangle
 id tvDescripcion
 id tvMarca
 id tvPrecio
-id txtDesc
-id txtMarca
-id txtPrecio
 id unchecked
 id uniform
 id unlabeled
@@ -3903,7 +3899,6 @@ layout ime_secondary_split_test_activity
 layout item_categoria
 layout item_oferta
 layout item_producto
-layout item_productos_xcategoria
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

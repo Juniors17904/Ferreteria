@@ -3439,7 +3439,6 @@ int id ignoreRequest 0x7f0800ea
 int id image 0x7f0800eb
 int id imageView 0x7f0800ec
 int id imagenOf 0x7f0800ed
-int id img 0x7f0800ee
 int id immediateStop 0x7f0800ef
 int id included 0x7f0800f0
 int id indeterminate 0x7f0800f1
@@ -3732,9 +3731,6 @@ int id triangle 0x7f08020f
 int id tvDescripcion 0x7f080210
 int id tvMarca 0x7f080211
 int id tvPrecio 0x7f080212
-int id txtDesc 0x7f080213
-int id txtMarca 0x7f080214
-int id txtPrecio 0x7f080215
 int id unchecked 0x7f080216
 int id uniform 0x7f080217
 int id unlabeled 0x7f080218
@@ -3902,7 +3898,6 @@ int layout ime_secondary_split_test_activity 0x7f0b0035
 int layout item_categoria 0x7f0b0036
 int layout item_oferta 0x7f0b0037
 int layout item_producto 0x7f0b0038
-int layout item_productos_xcategoria 0x7f0b0039
 int layout m3_alert_dialog 0x7f0b003a
 int layout m3_alert_dialog_actions 0x7f0b003b
 int layout m3_alert_dialog_title 0x7f0b003c
