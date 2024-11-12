@@ -6,10 +6,10 @@
     <style name="Base.Theme.Ferreteria" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Personaliza tu tema aquí -->
         <item name="colorPrimary">@color/colorPrimary</item> <!-- Color de la barra -->
-        <item name="colorPrimaryDark">#12B300</item> <!-- Color del notch -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!--  -->
         <item name="colorAccent">@color/colorAccent</item> <!-- Color de acento -->
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item> <!-- Color del status bar -->
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item> <!-- Color de la barra de navegación -->
+        <item name="android:statusBarColor">@color/colorNoch</item> <!-- Color del NOTCH -->
+        <item name="android:navigationBarColor">#454444</item> <!-- Color de la barra de navegación -->
     </style>
 
     <!-- Tema principal -->
@@ -30,11 +30,11 @@
     <style name="Theme.Ferreteria.NoNotch">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#1F6D07</item>
+        <item name="colorPrimaryDark">#FBD60B</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">#266400</item>
+        <item name="android:navigationBarColor">#920000</item>
         <item name="android:windowBackground">#FFFFFF</item>
     </style>
 

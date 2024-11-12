@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ferreteria.AdaptadorCategorias;
-import com.example.ferreteria.AdaptadorOfertas;
+import com.example.ferreteria.Adp.AdaptadorCategorias;
+import com.example.ferreteria.Adp.AdaptadorOfertas;
 import com.example.ferreteria.R;
 import com.example.ferreteria.databinding.FragmentHomeBinding;
 import com.example.ferreteria.modelo.dao.CategoriaDAO;

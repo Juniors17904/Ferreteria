@@ -1373,6 +1373,7 @@ attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
+color CustomButtonStyle
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -1421,6 +1422,7 @@ color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
 color colorAccent
+color colorNoch
 color colorPrimary
 color colorPrimaryDark
 color design_bottom_navigation_shadow_color
@@ -3044,6 +3046,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable alicate
 drawable arena
+drawable atrass
 drawable avd_hide_password
 drawable avd_show_password
 drawable bombilla
@@ -3075,6 +3078,7 @@ drawable ferre2
 drawable fontaneria
 drawable guantes
 drawable herramientas
+drawable homeiconuiiconvector
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3085,8 +3089,6 @@ drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
-drawable ic_launcher_background
-drawable ic_launcher_foreground
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3098,6 +3100,9 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable img
+drawable img_1
+drawable img_2
 drawable indeterminate_static
 drawable interruptor
 drawable jardineria
@@ -3299,6 +3304,7 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id btnAgregarCarrito
+id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3376,9 +3382,10 @@ id easeInOut
 id easeOut
 id east
 id edge
-id editTextText
 id edit_query
 id edit_text_id
+id edtCategoriaSeleccionada
+id edtOtrasCategorias
 id elastic
 id embed
 id end
@@ -3433,6 +3440,7 @@ id ignoreRequest
 id image
 id imageView
 id imagenOf
+id img
 id immediateStop
 id included
 id indeterminate
@@ -3587,6 +3595,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyCat
+id recyOtras
 id recyclerView
 id recyclerViewCategorias
 id recyclerViewOferta
@@ -3688,6 +3698,7 @@ id textTop
 id textView
 id textView2
 id textView3
+id textView4
 id text_gallery
 id text_input_end_icon
 id text_input_error_icon
@@ -3722,6 +3733,9 @@ id triangle
 id tvDescripcion
 id tvMarca
 id tvPrecio
+id txtDesc
+id txtMarca
+id txtPrecio
 id unchecked
 id uniform
 id unlabeled
@@ -3862,6 +3876,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_buscar
 layout activity_menu
+layout activity_productos
 layout app_bar_menu
 layout content_menu
 layout custom_dialog
@@ -3888,6 +3903,7 @@ layout ime_secondary_split_test_activity
 layout item_categoria
 layout item_oferta
 layout item_producto
+layout item_productos_xcategoria
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3962,8 +3978,6 @@ layout splash_screen
 layout support_simple_spinner_dropdown_item
 menu activity_inicio_drawer
 menu barra_contenedor
-mipmap ic_launcher
-mipmap ic_launcher_round
 navigation mobile_navigation
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
@@ -4439,6 +4453,7 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style CustomButtonStyle
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Animation
 style MaterialAlertDialog_Material3_Body_Text

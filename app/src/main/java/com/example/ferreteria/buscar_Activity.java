@@ -10,12 +10,14 @@ import android.content.Context;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ferreteria.Adp.AdaptadorProductos;
 import com.example.ferreteria.modelo.dao.ProductoDAO;
 import com.example.ferreteria.modelo.dto.Producto;
 
@@ -35,16 +37,15 @@ public class buscar_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar);
 
-        editTextText = findViewById(R.id.editTextText);
-        recyclerView = findViewById(R.id.recyclerView);
-
-        // Configurar RecyclerView y el adaptador con una lista vacía
-        productosAdapter = new AdaptadorProductos(new ArrayList<>());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(productosAdapter);
-
+        enlazarControles();
+        confRecycler();
+        confBuscador();
+        //cambiarColorBarraEstado();
+        // configurarInsetsDeVentana();
         mostrarTeclado();
+    }
 
+    private void confBuscador() {
         editTextText.addTextChangedListener(new android.text.TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence textoIngresado, int pInicio, int cant, int eliminados) {}
@@ -61,9 +62,17 @@ public class buscar_Activity extends AppCompatActivity {
             @Override
             public void afterTextChanged(android.text.Editable textoIngresado) {}
         });
+    }
 
-        cambiarColorBarraEstado();
-        configurarInsetsDeVentana();
+    private void confRecycler() {
+        productosAdapter = new AdaptadorProductos(new ArrayList<>());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(productosAdapter);
+    }
+
+    private void enlazarControles() {
+        editTextText = findViewById(R.id.edtCategoriaSeleccionada);
+        recyclerView = findViewById(R.id.recyclerView);
     }
 
     private void mostrarTeclado() {
@@ -78,7 +87,7 @@ public class buscar_Activity extends AppCompatActivity {
 
     private void cambiarColorBarraEstado() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorNoch));
         }
     }
 

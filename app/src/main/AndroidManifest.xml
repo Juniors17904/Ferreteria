@@ -1,42 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ferreteria">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ferreteria"
+         android:theme="@style/AppTheme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ProductosActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <!-- Actividad Menu -->
         <activity
             android:name=".ui.MenuActivity"
             android:exported="false"
             android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.Ferreteria.NoActionBar" />
-
-
-        <!-- Actividad Buscar -->
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".buscar_Activity"
             android:exported="false"
-            android:theme="@style/Theme.Ferreteria.NoNotch" />
-
-
-
-        <!-- Actividad Splash -->
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

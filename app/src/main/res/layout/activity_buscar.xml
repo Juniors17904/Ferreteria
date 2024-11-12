@@ -15,7 +15,7 @@
         android:layout_width="0dp"
 
 
-        android:layout_height="55dp"
+        android:layout_height="65dp"
         android:background="@color/colorPrimaryDark"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,9 +25,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/edtCategoriaSeleccionada"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="65dp"
         android:background="@color/colorPrimaryDark"
         android:ems="10"
         android:foregroundGravity="center"
@@ -37,6 +37,7 @@
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FBFBFB"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +45,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="409dp"
-        android:layout_height="674dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

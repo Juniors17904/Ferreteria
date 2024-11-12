@@ -1,6 +1,8 @@
 R_DEF: Internal format may change without notice
 local
+color CustomButtonStyle
 color colorAccent
+color colorNoch
 color colorPrimary
 color colorPrimaryDark
 dimen activity_horizontal_margin
@@ -10,6 +12,7 @@ dimen nav_header_height
 dimen nav_header_vertical_spacing
 drawable alicate
 drawable arena
+drawable atrass
 drawable bombilla
 drawable brocha
 drawable cable
@@ -26,11 +29,13 @@ drawable ferre2
 drawable fontaneria
 drawable guantes
 drawable herramientas
-drawable ic_launcher_background
-drawable ic_launcher_foreground
+drawable homeiconuiiconvector
 drawable ic_menu_camera
 drawable ic_menu_gallery
 drawable ic_menu_slideshow
+drawable img
+drawable img_1
+drawable img_2
 drawable interruptor
 drawable jardineria
 drawable ladrillos
@@ -56,15 +61,18 @@ drawable yeso
 id app_bar_menu
 id boton_buscar
 id btnAgregarCarrito
+id button
 id descripcionOf
 id descuentoOf
 id drawer_layout
-id editTextText
+id edtCategoriaSeleccionada
+id edtOtrasCategorias
 id fab
 id fechaFinOferta
 id fechaInicioOferta
 id imageView
 id imagenOf
+id img
 id ivImagen
 id main
 id marcaOf
@@ -76,6 +84,8 @@ id nav_slideshow
 id nav_view
 id precio
 id precioDescuentoOf
+id recyCat
+id recyOtras
 id recyclerView
 id recyclerViewCategorias
 id recyclerViewOferta
@@ -83,14 +93,19 @@ id textInputLayout
 id textView
 id textView2
 id textView3
+id textView4
 id text_gallery
 id text_slideshow
 id toolbar
 id tvDescripcion
 id tvMarca
 id tvPrecio
+id txtDesc
+id txtMarca
+id txtPrecio
 layout activity_buscar
 layout activity_menu
+layout activity_productos
 layout app_bar_menu
 layout content_menu
 layout fragment_gallery
@@ -99,12 +114,11 @@ layout fragment_slideshow
 layout item_categoria
 layout item_oferta
 layout item_producto
+layout item_productos_xcategoria
 layout nav_header_menu
 layout splash_screen
 menu activity_inicio_drawer
 menu barra_contenedor
-mipmap ic_launcher
-mipmap ic_launcher_round
 navigation mobile_navigation
 string action_settings
 string app_name
@@ -120,6 +134,7 @@ string title_activity_inicio
 string title_activity_menu
 style AppTheme
 style Base.Theme.Ferreteria
+style CustomButtonStyle
 style Theme.Ferreteria
 style Theme.Ferreteria.AppBarOverlay
 style Theme.Ferreteria.NoActionBar

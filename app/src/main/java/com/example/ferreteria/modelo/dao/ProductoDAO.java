@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
+import com.example.ferreteria.modelo.dto.Categoria;
 import com.example.ferreteria.modelo.dto.Producto;
 import com.example.ferreteria.servicios.ConectaDB;
 
@@ -16,6 +18,7 @@ import java.util.List;
 // Clase para manejar operaciones sobre la tabla de productos
 public class ProductoDAO {
     private SQLiteDatabase db;
+    private String TAG= "----ProductoDAO";
 
     // Constructor que inicializa la conexión a la base de datos
     public ProductoDAO(Context context) {
@@ -43,8 +46,6 @@ public class ProductoDAO {
         }
         return resp;
     }
-
-
 
     public List<Producto> getProductosPorDescripcion(String descripcion) {
         List<Producto> lista = new ArrayList<>();
@@ -80,6 +81,115 @@ public class ProductoDAO {
             }
             cursor.close();
         }
+        return lista;
+    }
+
+    public List<Producto> mostrarProdSelect(int id) {
+        Log.i(TAG, "mostrar productos por categoira : " + id);
+        List<Producto> lista = new ArrayList<>();
+
+        // Consulta SQL para obtener los productos con descuento
+        String consulta = "SELECT " +
+                "p.marca AS nombreProducto, " +
+                "p.descripcion AS descripcionProducto, " +
+                "p.precio AS precioOriginal, " +
+                "CASE " +
+                "   WHEN o.descuento IS NOT NULL THEN ROUND(p.precio * (1 - (o.descuento / 100.0)), 2) " +
+                "   ELSE p.precio " +
+                "END AS precioConDescuento, " +
+                "CASE " +
+                "   WHEN o.descuento IS NOT NULL THEN 1 " +
+                "   ELSE 0 " +
+                "END AS tieneOferta, " +
+                "COALESCE(p.imagen, 0) AS imagenProducto " +
+                "FROM " + ConstantesApp.TABLA_PRODUCTOS + " p " +
+                "LEFT JOIN " + ConstantesApp.TABLA_OFERTAS + " o ON p.id = o.productoId " +
+                "WHERE p.categoriaid = ?";
+
+        // Ejecutar la consulta con el ID de categoría proporcionado
+        Cursor c = db.rawQuery(consulta, new String[]{String.valueOf(id)});
+
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    Producto producto = new Producto();
+                    producto.setMarca(c.getString(c.getColumnIndexOrThrow("nombreProducto")));
+                    producto.setDescripcion(c.getString(c.getColumnIndexOrThrow("descripcionProducto")));
+                    producto.setPrecio(c.getDouble(c.getColumnIndexOrThrow("precioOriginal")));
+                    producto.setPrecioConDescuento(c.getDouble(c.getColumnIndexOrThrow("precioConDescuento")));
+                    producto.setTieneOferta(c.getInt(c.getColumnIndexOrThrow("tieneOferta")) == 1);
+                    producto.setImagenProducto(c.getInt(c.getColumnIndexOrThrow("imagenProducto")));
+                    lista.add(producto);
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+
+        Log.i(TAG, "Número de productos encontrados: " + lista.size());
+        return lista;
+    }
+
+    public List<Producto> mostrarOtrosProductos(int id){
+        List<Producto> lista = new ArrayList<>();
+        Log.i(TAG, "mostrar otros productos ");
+        // Consulta SQL para obtener los productos con descuento
+        String consulta = "SELECT " +
+                "p.marca AS nombreProducto, " +
+                "p.descripcion AS descripcionProducto, " +
+                "p.precio AS precioOriginal, " +
+                "CASE " +
+                "   WHEN o.descuento IS NOT NULL THEN ROUND(p.precio * (1 - (o.descuento / 100.0)), 2) " +
+                "   ELSE p.precio " +
+                "END AS precioConDescuento, " +
+                "CASE " +
+                "   WHEN o.descuento IS NOT NULL THEN 1 " +
+                "   ELSE 0 " +
+                "END AS tieneOferta, " +
+                "COALESCE(p.imagen, 0) AS imagenProducto " +
+                "FROM " + ConstantesApp.TABLA_PRODUCTOS + " p " +
+                "LEFT JOIN " + ConstantesApp.TABLA_OFERTAS + " o ON p.id = o.productoId " +
+                "WHERE p.categoriaid != ?";
+
+        // Ejecutar la consulta con el ID de categoría proporcionado
+        Cursor c = db.rawQuery(consulta, new String[]{String.valueOf(id)});
+
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    Producto producto = new Producto();
+                    producto.setMarca(c.getString(c.getColumnIndexOrThrow("nombreProducto")));
+                    producto.setDescripcion(c.getString(c.getColumnIndexOrThrow("descripcionProducto")));
+                    producto.setPrecio(c.getDouble(c.getColumnIndexOrThrow("precioOriginal")));
+                    producto.setPrecioConDescuento(c.getDouble(c.getColumnIndexOrThrow("precioConDescuento")));
+                    producto.setTieneOferta(c.getInt(c.getColumnIndexOrThrow("tieneOferta")) == 1);
+                    producto.setImagenProducto(c.getInt(c.getColumnIndexOrThrow("imagenProducto")));
+                    lista.add(producto);
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        Log.i(TAG, "Número de productos encontrados: " + lista.size());
+        return  lista;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public List<Producto> Productos(String NombreCategoria){
+        List<Producto> lista =new ArrayList<>();
+        String Consulta = "SELECT*FROM PRODUCTOS WHERE categoriaid = 2";
+
+
         return lista;
     }
 

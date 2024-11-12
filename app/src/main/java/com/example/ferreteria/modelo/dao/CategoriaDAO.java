@@ -25,7 +25,6 @@ public class CategoriaDAO {
 
     }
 
-
     public List<Categoria> getListCat() {
         Log.i(TAG,"Obteniendo Categorias");
         List<Categoria> lista = new ArrayList<>();
@@ -55,11 +54,13 @@ public class CategoriaDAO {
         return lista;
     }
 
-
     public void closeDB() {
         if (db != null && db.isOpen()) {
             db.close();
             //Log.i(TAG, "Base de datos cerrada");
         }
     }
+
+
+
 }

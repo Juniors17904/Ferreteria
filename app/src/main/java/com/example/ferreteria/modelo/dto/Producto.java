@@ -3,15 +3,15 @@ package com.example.ferreteria.modelo.dto;
 import androidx.annotation.NonNull;
 
 public class Producto {
-    private int id; // ID del producto
-    private String marca; // Nombre del producto
-    private String descripcion; // Descripción del producto
-    private double precio; // Precio del producto
-    private double precioConDescuento; // Precio del producto con descuento (si aplica)
-    private boolean tieneOferta; // Indica si el producto tiene oferta
-    private int stock; // Stock disponible
-    private int categoriaId; // ID de la categoría a la que pertenece el producto
-    private int imagenProducto; // Imagen del producto
+    private int id;
+    private String marca;
+    private String descripcion;
+    private double precio;
+    private double precioConDescuento;
+    private boolean tieneOferta;
+    private int stock;
+    private int categoriaId;
+    private int imagenProducto;
 
     public Producto() {
     }
@@ -103,6 +103,6 @@ public class Producto {
     @NonNull
     @Override
     public String toString() {
-        return marca; // Retorna el nombre del producto
+        return marca;
     }
 }

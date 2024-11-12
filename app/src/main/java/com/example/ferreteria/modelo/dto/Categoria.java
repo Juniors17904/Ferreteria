@@ -2,7 +2,9 @@ package com.example.ferreteria.modelo.dto;
 
 import androidx.annotation.NonNull;
 
-public class Categoria {
+import java.io.Serializable;
+
+public class Categoria implements Serializable {
     private int id;
     private String nombre;
     private String descripcion; // Campo para la descripción
@@ -43,7 +45,7 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public int getImagen() { // Getter para la imagen
+    public int getImagen() {
         return imagen;
     }
 

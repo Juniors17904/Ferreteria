@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="CustomButtonStyle">#FFEB3B</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorNoch">#020202</color>
+    <color name="colorPrimary">#892B24</color>
+    <color name="colorPrimaryDark">#892B24</color>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
@@ -10,12 +12,12 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <string name="action_settings">Settings</string>
     <string name="app_name">Ferreteria</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Mis Pedidos</string>
+    <string name="menu_home">Inicio</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">Calidad y Variedad para Todos tus Proyectos</string>
+    <string name="nav_header_title">Bienvenido </string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="title_activity_inicio">InicioActivity</string>
@@ -24,14 +26,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/CustomButtonStyle</item>
     </style>
     <style name="Base.Theme.Ferreteria" parent="Theme.Material3.DayNight.NoActionBar">
         
         <item name="colorPrimary">@color/colorPrimary</item> 
-        <item name="colorPrimaryDark">#12B300</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
         <item name="colorAccent">@color/colorAccent</item> 
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item> 
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item> 
+        <item name="android:statusBarColor">@color/colorNoch</item> 
+        <item name="android:navigationBarColor">#454444</item> 
+    </style>
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/colorAccent</item> 
+        <item name="android:textColor">@color/colorAccent</item> 
     </style>
     <style name="Theme.Ferreteria" parent="Base.Theme.Ferreteria"/>
     <style name="Theme.Ferreteria.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -42,11 +49,11 @@
     <style name="Theme.Ferreteria.NoNotch">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#1F6D07</item>
+        <item name="colorPrimaryDark">#FBD60B</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">#266400</item>
+        <item name="android:navigationBarColor">#920000</item>
         <item name="android:windowBackground">#FFFFFF</item>
     </style>
     <style name="Theme.Ferreteria.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
