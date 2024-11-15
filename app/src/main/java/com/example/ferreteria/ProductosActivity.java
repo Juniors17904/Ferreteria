@@ -2,7 +2,9 @@ package com.example.ferreteria;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,7 +80,4 @@ public class ProductosActivity extends AppCompatActivity {
         rwCategoria=findViewById(R.id.recyCat);
         rwOtrasCategorias=findViewById(R.id.recyOtras);
     }
-
-
-
 }

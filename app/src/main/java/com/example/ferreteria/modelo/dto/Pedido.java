@@ -2,15 +2,16 @@ package com.example.ferreteria.modelo.dto;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Pedido {
     private int id; // ID del pedido
     private int clienteId; // ID del cliente que realizó el pedido
     private Date fechaPedido; // Fecha en que se realizó el pedido
 
-    public Pedido() {
-    }
+    public Pedido() { }
 
     public Pedido(int id, int clienteId, Date fechaPedido) {
         this.id = id;

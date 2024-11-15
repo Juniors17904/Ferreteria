@@ -1,10 +1,12 @@
 package com.example.ferreteria.modelo.dao;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
 import com.example.ferreteria.modelo.dto.Pedido;
@@ -28,7 +30,7 @@ public class PedidoDAO {
     }
 
     // Método para insertar un nuevo pedido en la base de datos
-    public String insertar(Pedido pedido) {
+    public boolean insertar(Pedido pedido) {
         String resp = "";
         ContentValues registro = new ContentValues();
         registro.put("ClienteID", pedido.getClienteId());
@@ -36,10 +38,11 @@ public class PedidoDAO {
 
         try {
             db.insertOrThrow(ConstantesApp.TABLA_PEDIDOS, null, registro);
+            return true;
         } catch (SQLException ex) {
-            resp = ex.getMessage();
+            Log.i("Inserción de Pedido: ", ex.getMessage());
+            return false;
         }
-        return resp;
     }
 
     // Método para obtener una lista de pedidos de la base de datos
@@ -61,5 +64,22 @@ public class PedidoDAO {
             c.close();
         }
         return lista;
+    }
+
+    @SuppressLint("Range")
+    public int getIdByClienteId(Integer idCliente) {
+        String query = "SELECT id FROM "+ ConstantesApp.TABLA_PEDIDOS + " WHERE clienteId = ? LIMIT 1";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idCliente)});
+
+        int pedidoId = -1;
+
+        if (cursor.moveToFirst()) {
+            pedidoId = cursor.getInt(cursor.getColumnIndex("id"));
+        }
+
+        cursor.close();
+
+        return pedidoId;
     }
 }

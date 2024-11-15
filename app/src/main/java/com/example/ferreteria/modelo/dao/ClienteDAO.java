@@ -1,10 +1,12 @@
 package com.example.ferreteria.modelo.dao;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
 import com.example.ferreteria.modelo.dto.Cliente;
@@ -27,7 +29,7 @@ import java.util.List;
 }
 
     // Método para insertar una nueva cliente
-    public String insertar(Cliente c) {
+    public boolean insertar(Cliente c) {
             String resp = "";
             ContentValues registro = new ContentValues();
             registro.put("Nombre", c.getNombre());
@@ -38,9 +40,10 @@ import java.util.List;
             try {
                 db.insertOrThrow(ConstantesApp.TABLA_CLIENTES, null, registro);
             } catch (SQLException ex) {
-                resp = ex.getMessage();
+                Log.i("Insertion Client: ", ex.getMessage());
+                return false;
             }
-            return resp;
+            return true;
         }
 
     // Método para obtener una lista de todas las clientes
@@ -64,6 +67,26 @@ import java.util.List;
             }
             return lista;
         }
+
+    @SuppressLint("Range")
+    public int getIdByClient(String email) {
+        int clientId = -1;
+        String query = "SELECT id FROM "+ ConstantesApp.TABLA_CLIENTES +" WHERE correo = ? LIMIT 1";
+
+        try {
+            Cursor cursor = db.rawQuery(query, new String[]{email});
+
+            if (cursor.moveToFirst()) {
+                clientId = cursor.getInt(cursor.getColumnIndex("id"));
+            }
+
+            cursor.close();
+            return clientId;
+        } catch (SQLException e) {
+            Log.i("Obteniendo id del cliente: ", String.valueOf(clientId) + "Error: "+ e.getMessage());
+            return clientId;
+        }
+    }
 }
 
 
