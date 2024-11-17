@@ -1372,6 +1372,8 @@ int attr yearTodayStyle 0x7f030504
 int bool abc_action_bar_embed_tabs 0x7f040000
 int bool abc_config_actionMenuItemAllCaps 0x7f040001
 int bool mtrl_btn_textappearance_all_caps 0x7f040002
+int color ColorText1 0x7f05030b
+int color ColorText2 0x7f05030c
 int color CustomButtonStyle 0x7f050000
 int color abc_background_cache_hint_selector_material_dark 0x7f050001
 int color abc_background_cache_hint_selector_material_light 0x7f050002
@@ -3050,6 +3052,7 @@ int drawable avd_hide_password 0x7f07007a
 int drawable avd_show_password 0x7f07007b
 int drawable bombilla 0x7f07007c
 int drawable brocha 0x7f07007d
+int drawable btn 0x7f070114
 int drawable btn_checkbox_checked_mtrl 0x7f07007e
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07007f
 int drawable btn_checkbox_unchecked_mtrl 0x7f070080
@@ -3058,6 +3061,7 @@ int drawable btn_radio_off_mtrl 0x7f070082
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f070083
 int drawable btn_radio_on_mtrl 0x7f070084
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070085
+int drawable btn_rounded 0x7f070115
 int drawable cable 0x7f070086
 int drawable canio 0x7f070087
 int drawable cemento 0x7f070088
@@ -3304,7 +3308,8 @@ int id bounceEnd 0x7f080064
 int id bounceStart 0x7f080065
 int id btnAgregarCarrito 0x7f080066
 int id btnIniciarSesion 0x7f080067
-int id button 0x7f08022a
+int id btnLogin 0x7f080266
+int id btnRegistrarse 0x7f080267
 int id buttonPanel 0x7f080068
 int id cache_measures 0x7f080069
 int id callMeasure 0x7f08006a
@@ -3394,6 +3399,8 @@ int id end_padder 0x7f0800bd
 int id enterAlways 0x7f0800be
 int id enterAlwaysCollapsed 0x7f0800bf
 int id escape 0x7f0800c0
+int id etxContrasena 0x7f080268
+int id etxUsuario 0x7f080269
 int id exitUntilCollapsed 0x7f0800c1
 int id expand_activities_button 0x7f0800c2
 int id expanded_menu 0x7f0800c3
@@ -3438,6 +3445,9 @@ int id ifRoom 0x7f0800e9
 int id ignore 0x7f0800ea
 int id ignoreRequest 0x7f0800eb
 int id image 0x7f0800ec
+int id imageButton 0x7f080263
+int id imageButton2 0x7f080264
+int id imageButton3 0x7f080265
 int id imageView 0x7f0800ed
 int id imagenOf 0x7f0800ee
 int id immediateStop 0x7f0800ef
@@ -3871,9 +3881,11 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_buscar 0x7f0b001c
+int layout activity_iniciarsesion 0x7f0b0086
 int layout activity_login 0x7f0b001d
 int layout activity_menu 0x7f0b001e
 int layout activity_productos 0x7f0b001f
+int layout activity_registrarse 0x7f0b0085
 int layout app_bar_menu 0x7f0b0020
 int layout content_menu 0x7f0b0021
 int layout custom_dialog 0x7f0b0022

@@ -1,5 +1,7 @@
 R_DEF: Internal format may change without notice
 local
+color ColorText1
+color ColorText2
 color CustomButtonStyle
 color colorAccent
 color colorNoch
@@ -15,6 +17,8 @@ drawable arena
 drawable atrass
 drawable bombilla
 drawable brocha
+drawable btn
+drawable btn_rounded
 drawable cable
 drawable canio
 drawable cemento
@@ -62,15 +66,21 @@ id app_bar_menu
 id boton_buscar
 id btnAgregarCarrito
 id btnIniciarSesion
-id button
+id btnLogin
+id btnRegistrarse
 id descripcionOf
 id descuentoOf
 id drawer_layout
 id edtCategoriaSeleccionada
 id edtOtrasCategorias
+id etxContrasena
+id etxUsuario
 id fab
 id fechaFinOferta
 id fechaInicioOferta
+id imageButton
+id imageButton2
+id imageButton3
 id imageView
 id imagenOf
 id ivImagen
@@ -101,9 +111,11 @@ id tvDescripcion
 id tvMarca
 id tvPrecio
 layout activity_buscar
+layout activity_iniciarsesion
 layout activity_login
 layout activity_menu
 layout activity_productos
+layout activity_registrarse
 layout app_bar_menu
 layout content_menu
 layout fragment_gallery

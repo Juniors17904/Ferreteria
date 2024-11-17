@@ -6,6 +6,8 @@
         <color name="colorAccent">#03DAC5</color>
         <color name="colorNoch">#020202</color>
         <color name="CustomButtonStyle">#FFEB3B</color>
+        <color name="ColorText1">#333131</color>
+        <color name="ColorText2">#6B5B5B</color>
 
 
 </resources>

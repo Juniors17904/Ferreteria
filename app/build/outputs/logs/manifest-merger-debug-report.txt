@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [androidx.databinding:viewbinding:8.6.0] C:\Users\libra\.gradle\caches\transforms-4\2f4b14cb9c006f68b49caaa9acc077b2\transformed\viewbinding-8.6.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\libra\.gradle\caches\transforms-4\a07ac74954748c30fa372c55252ddd2c\transformed\navigation-common-2.6.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.6.0] C:\Users\libra\.gradle\caches\transforms-4\dc4e02433709da320e6f200af04cb30b\transformed\navigation-runtime-2.6.0\AndroidManifest.xml:17:1-22:12
@@ -77,8 +77,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\libra\.
 	xmlns:android
 		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:6:5-39:19
-INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:6:5-39:19
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:6:5-46:19
+INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:6:5-46:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\libra\.gradle\caches\transforms-4\a24e5506081890895b47a4f370672787\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\libra\.gradle\caches\transforms-4\a24e5506081890895b47a4f370672787\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\libra\.gradle\caches\transforms-4\4b47de0e1816a4c8434fc558d446ab3a\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -111,56 +111,72 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\li
 		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
 		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:10:9-40
-activity#com.example.ferreteria.LoginActivity
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:12:9-16:15
+activity#com.example.ferreteria.login.IniciarSesionActivity
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:12:9-15:47
 	android:exported
 		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:14:13-37
 	android:theme
 		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:15:13-44
 	android:name
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:13:13-42
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:13:13-56
+activity#com.example.ferreteria.login.RegistrarseActivity
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:16:9-19:47
+	android:exported
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:18:13-37
+	android:theme
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:19:13-44
+	android:name
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:17:13-54
+activity#com.example.ferreteria.login.LoginActivity
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:20:9-23:47
+	android:exported
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:22:13-37
+	android:theme
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:23:13-44
+	android:name
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:21:13-48
 activity#com.example.ferreteria.ProductosActivity
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:17:9-20:47
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:24:9-27:47
 	android:exported
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:19:13-37
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:26:13-37
 	android:theme
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:20:13-44
-	android:name
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:18:13-46
-activity#com.example.ferreteria.MenuActivity
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:21:9-25:47
-	android:label
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:24:13-56
-	android:exported
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:23:13-37
-	android:theme
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:25:13-44
-	android:name
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:22:13-41
-activity#com.example.ferreteria.buscar_Activity
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:26:9-29:47
-	android:exported
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:28:13-37
-	android:theme
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:29:13-44
-	android:name
 		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:27:13-44
-activity#com.example.ferreteria.SplashActivity
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:30:9-38:20
+	android:name
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:25:13-46
+activity#com.example.ferreteria.MenuActivity
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:28:9-32:47
+	android:label
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:31:13-56
 	android:exported
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:32:13-36
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:30:13-37
+	android:theme
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:32:13-44
 	android:name
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:31:13-43
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:29:13-41
+activity#com.example.ferreteria.buscar_Activity
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:33:9-36:47
+	android:exported
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:35:13-37
+	android:theme
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:34:13-44
+activity#com.example.ferreteria.SplashActivity
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:37:9-45:20
+	android:exported
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:39:13-36
+	android:name
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:38:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:33:13-37:29
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:40:13-44:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:34:17-69
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:41:17-69
 	android:name
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:34:25-66
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:41:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:36:17-77
+ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:43:17-77
 	android:name
-		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:36:27-74
+		ADDED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml:43:27-74
 uses-sdk
 INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\libra\Downloads\Ferreteria\app\src\main\AndroidManifest.xml

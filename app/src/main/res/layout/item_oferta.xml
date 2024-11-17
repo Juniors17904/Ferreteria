@@ -21,6 +21,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Marca"
+        android:textColor="@color/ColorText1"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +35,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Descripción"
+        android:textColor="@color/ColorText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imagenOf"
         app:layout_constraintTop_toBottomOf="@+id/marcaOf" />
@@ -45,6 +47,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Precio"
+        android:textColor="@color/ColorText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imagenOf"
         app:layout_constraintTop_toBottomOf="@+id/descripcionOf" />
@@ -56,6 +59,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Descuento"
+        android:textColor="@color/ColorText1"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +73,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Precio Con Descuento"
+        android:textColor="@color/ColorText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imagenOf"
         app:layout_constraintTop_toBottomOf="@+id/descuentoOf" />
@@ -80,6 +85,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Fecha Inicio"
+        android:textColor="@color/ColorText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imagenOf"
         app:layout_constraintTop_toBottomOf="@+id/precioDescuentoOf" />
@@ -91,6 +97,7 @@
         android:layout_marginStart="5dp"
         android:paddingStart="5dp"
         android:text="Fecha fin"
+        android:textColor="@color/ColorText2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imagenOf"
         app:layout_constraintTop_toBottomOf="@+id/fechaInicioOferta" />

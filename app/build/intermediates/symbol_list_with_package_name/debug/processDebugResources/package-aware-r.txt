@@ -1373,6 +1373,8 @@ attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
+color ColorText1
+color ColorText2
 color CustomButtonStyle
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
@@ -3051,6 +3053,7 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable bombilla
 drawable brocha
+drawable btn
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3059,6 +3062,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable btn_rounded
 drawable cable
 drawable canio
 drawable cemento
@@ -3305,7 +3309,8 @@ id bounceEnd
 id bounceStart
 id btnAgregarCarrito
 id btnIniciarSesion
-id button
+id btnLogin
+id btnRegistrarse
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3395,6 +3400,8 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id etxContrasena
+id etxUsuario
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3439,6 +3446,9 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageButton
+id imageButton2
+id imageButton3
 id imageView
 id imagenOf
 id immediateStop
@@ -3872,9 +3882,11 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_buscar
+layout activity_iniciarsesion
 layout activity_login
 layout activity_menu
 layout activity_productos
+layout activity_registrarse
 layout app_bar_menu
 layout content_menu
 layout custom_dialog

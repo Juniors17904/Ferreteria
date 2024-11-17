@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -16,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.ferreteria.databinding.ActivityMenuBinding;
+import com.example.ferreteria.login.LoginActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
