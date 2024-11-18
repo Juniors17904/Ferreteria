@@ -9,11 +9,11 @@ import java.util.List;
 public class Pedido {
     private int id; // ID del pedido
     private int clienteId; // ID del cliente que realizó el pedido
-    private Date fechaPedido; // Fecha en que se realizó el pedido
+    private long fechaPedido; // Fecha en que se realizó el pedido
 
     public Pedido() { }
 
-    public Pedido(int id, int clienteId, Date fechaPedido) {
+    public Pedido(int id, int clienteId, long fechaPedido) {
         this.id = id;
         this.clienteId = clienteId;
         this.fechaPedido = fechaPedido;
@@ -35,11 +35,11 @@ public class Pedido {
         this.clienteId = clienteId;
     }
 
-    public Date getFechaPedido() {
+    public long getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(long fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 

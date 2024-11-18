@@ -34,7 +34,7 @@ public class PedidoDAO {
         String resp = "";
         ContentValues registro = new ContentValues();
         registro.put("ClienteID", pedido.getClienteId());
-        registro.put("FechaPedido", pedido.getFechaPedido().getTime()); // Almacena la fecha como long
+        registro.put("FechaPedido", pedido.getFechaPedido()); // Almacena la fecha como long
 
         try {
             db.insertOrThrow(ConstantesApp.TABLA_PEDIDOS, null, registro);
@@ -57,7 +57,7 @@ public class PedidoDAO {
                     Pedido pedido = new Pedido();
                     pedido.setId(c.getInt(c.getColumnIndexOrThrow("Id")));
                     pedido.setClienteId(c.getInt(c.getColumnIndexOrThrow("ClienteID")));
-                    pedido.setFechaPedido(new Date(c.getLong(c.getColumnIndexOrThrow("FechaPedido")))); // Convierte long a Date
+                    pedido.setFechaPedido(c.getLong(c.getColumnIndexOrThrow("FechaPedido"))); // Convierte long a Date
                     lista.add(pedido);
                 } while (c.moveToNext());
             }
@@ -67,10 +67,10 @@ public class PedidoDAO {
     }
 
     @SuppressLint("Range")
-    public int getIdByClienteId(Integer idCliente) {
-        String query = "SELECT id FROM "+ ConstantesApp.TABLA_PEDIDOS + " WHERE clienteId = ? LIMIT 1";
+    public int getLastId() {
+        String query = "SELECT MAX(id) as id FROM "+ ConstantesApp.TABLA_PEDIDOS + ";";
 
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idCliente)});
+        Cursor cursor = db.rawQuery(query, null);
 
         int pedidoId = -1;
 

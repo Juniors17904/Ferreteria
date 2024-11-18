@@ -94,12 +94,12 @@ public class DetallePedidoDAO {
     }
 
     @SuppressLint("Range")
-    public List<Historial> getAllDetallePedidosByIdClient(int idClient) {
+    public List<Historial> getAllDetallePedidos() {
         List<Historial> listCadaDetallePedidoDelCliente = new ArrayList<>();
         String query = "SELECT pr.marca as marca, pr.descripcion as descrip, d.cantidad as cantidad, d.precioUnit as precioUnit, pe.fechaPedido as fecha, pr.imagen as imagen FROM " + ConstantesApp.TABLA_DETALLES_PEDIDOS +
                 " d INNER JOIN " +ConstantesApp.TABLA_PRODUCTOS+" pr ON pr.id = d.idProducto INNER JOIN "+ConstantesApp.TABLA_PEDIDOS+
-                " pe ON pe.id = d.idPedido INNER JOIN "+ConstantesApp.TABLA_CLIENTES+" c ON c.id = pe.clienteID WHERE c.id = ?;";
-        try (Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idClient)})) {
+                " pe ON pe.id = d.idPedido;";
+        try (Cursor cursor = db.rawQuery(query, null)) {
             if (cursor != null) {
                 if (cursor.moveToFirst()) {
                     do {
@@ -109,7 +109,8 @@ public class DetallePedidoDAO {
                         historial.setCantidad(cursor.getInt(cursor.getColumnIndex("cantidad")));
                         historial.setPrecioUnit(cursor.getDouble(cursor.getColumnIndex("precioUnit")));
                         long timestamp = cursor.getLong(cursor.getColumnIndex("fecha"));
-                        historial.setFecha(new java.util.Date(timestamp));
+                        Log.i("DAO FECHA: ", String.valueOf(timestamp));
+                        historial.setFecha(timestamp);
                         historial.setImagenProducto(cursor.getInt(cursor.getColumnIndex("imagen")));
 
                         listCadaDetallePedidoDelCliente.add(historial);

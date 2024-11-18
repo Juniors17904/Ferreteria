@@ -7,7 +7,7 @@ public class Historial {
     private String descrip;
     private double precioUnit;
     private int cantidad;
-    private Date fecha;
+    private long fecha;
     private int imagenProducto;
 
     public String getMarca() {
@@ -42,11 +42,11 @@ public class Historial {
         this.cantidad = cantidad;
     }
 
-    public Date getFecha() {
+    public long getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(long fecha) {
         this.fecha = fecha;
     }
 

@@ -174,12 +174,12 @@ public class ProductoDAO {
     }
 
     @SuppressLint("Range")
-    public int getProductoIdByMarca(String marcaProducto) {
-        String query = "SELECT id FROM " + ConstantesApp.TABLA_PRODUCTOS + " WHERE marca = ? LIMIT 1;";
+    public int getProductoIdByDescription(String descrip) {
+        String query = "SELECT id FROM " + ConstantesApp.TABLA_PRODUCTOS + " WHERE descripcion = ? LIMIT 1;";
 
         int idProducto = -1;
 
-        Cursor cursor = db.rawQuery(query, new String[]{marcaProducto});
+        Cursor cursor = db.rawQuery(query, new String[]{descrip});
 
         if (cursor.moveToFirst()) {
             idProducto = cursor.getInt(cursor.getColumnIndex("id"));

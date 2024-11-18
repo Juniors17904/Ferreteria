@@ -1,5 +1,6 @@
 package com.example.ferreteria.Adp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.ferreteria.R;
 import com.example.ferreteria.modelo.dto.Historial;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,8 +40,9 @@ public class AdaptadorHistorialDetallePedido extends RecyclerView.Adapter<Adapta
         holder.hpMarca.setText(historial.getMarca());
         holder.hpDescip.setText(historial.getDescrip());
         holder.hpCantidad.setText(String.valueOf(historial.getCantidad()));
-        holder.hpPrecioUnit.setText(String.format("S/. %.2f", historial.getPrecioUnit()));
-        holder.hpFecha.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(historial.getFecha()));
+        holder.hpPrecioUnit.setText(String.format("Precio Unitario: S/. %.2f", historial.getPrecioUnit()));
+        holder.hpFecha.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date(historial.getFecha())));
+        Log.i("Fecha", new SimpleDateFormat("dd/MM/yyyy").format(new Date(historial.getFecha())));
         holder.hpImageView.setImageResource(historial.getImagenProducto());
     }
 

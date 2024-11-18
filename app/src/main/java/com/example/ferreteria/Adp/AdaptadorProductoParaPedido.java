@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +22,17 @@ import com.example.ferreteria.modelo.dto.ListaProductoParaPedido;
 import com.example.ferreteria.modelo.dto.Producto;
 import com.example.ferreteria.ui.pedidos.PedidosFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class AdaptadorProductoParaPedido extends RecyclerView.Adapter<AdaptadorProductoParaPedido.PedidoViewHolder> {
     ListaProductoParaPedido single = ListaProductoParaPedido.getInstance();
-    private Map<Integer, Integer> cantidades = new HashMap<>();
+    private static Map<Integer, Integer> cantidades = new HashMap<>();
     private PedidosFragment fragment;
 
     public AdaptadorProductoParaPedido(PedidosFragment fragment) {
@@ -64,7 +68,7 @@ public class AdaptadorProductoParaPedido extends RecyclerView.Adapter<AdaptadorP
     static class PedidoViewHolder extends RecyclerView.ViewHolder {
         /// pdp == "Producto del Pedido"
         private ImageView pdpImageView;
-        private TextView pdpMarca, pdpDescrip, pdpPrecio;
+        private TextView pdpMarca, pdpDescrip, pdpPrecio, pdpFecha;
         private Button btnEliminar;
         private AdaptadorProductoParaPedido adaptadorProductoParaPedido;
         private EditText txtNumberCantidad;
@@ -77,13 +81,14 @@ public class AdaptadorProductoParaPedido extends RecyclerView.Adapter<AdaptadorP
             pdpDescrip = itemView.findViewById(R.id.pdpDescrip);
             pdpPrecio = itemView.findViewById(R.id.pdpPrecio);
             btnEliminar = itemView.findViewById(R.id.pdpBtnEliminarProducto);
+            pdpFecha = itemView.findViewById(R.id.pptextViewFecha);
             txtNumberCantidad = itemView.findViewById(R.id.editTextNumberCantidad);
         }
 
         int obtenerIdProducto(Producto productoSeleccionado) {
             ProductoDAO productoDAO = new ProductoDAO(itemView.getContext());
 
-            return productoDAO.getProductoIdByMarca(productoSeleccionado.getMarca());
+            return productoDAO.getProductoIdByDescription(productoSeleccionado.getDescripcion());
         }
 
         public void bind(Producto productoSeleccionado, int position) {
@@ -95,6 +100,9 @@ public class AdaptadorProductoParaPedido extends RecyclerView.Adapter<AdaptadorP
 
             pdpMarca.setText(productoSeleccionado.getMarca());
             pdpDescrip.setText(productoSeleccionado.getDescripcion());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.forLanguageTag("es_ES"));
+            Log.i("Fechaaaaaaaa: ", simpleDateFormat.format(new Date()));
+            pdpFecha.setText(simpleDateFormat.format(new Date()));
 
             // precio con descuento si está en oferta
             if (productoSeleccionado.isTieneOferta()) {
@@ -148,6 +156,8 @@ public class AdaptadorProductoParaPedido extends RecyclerView.Adapter<AdaptadorP
 
                     int obtenerIdDelProducto = obtenerIdProducto(productoSeleccionado);
                     adaptadorProductoParaPedido.getCantidades().put(obtenerIdDelProducto, cantidad);
+
+                    adaptadorProductoParaPedido.fragment.actualizarTotal();
                 }
             });
         }

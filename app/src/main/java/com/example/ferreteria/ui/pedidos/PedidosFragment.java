@@ -55,7 +55,7 @@ public class PedidosFragment extends Fragment {
     /*
     * Componentes de la ventana de Pedidos
     * */
-    private EditText txtNombres, txtEmail, txtTelf, txtDirecc;
+    //private EditText txtNombres, txtEmail, txtTelf, txtDirecc;
     //private EditText txtNumberCantidad;
     private TextView precioTotal;
     private Button btnLimpiarListaPedido, btnRegistrarPedido, btnHistorialPedidos;
@@ -67,10 +67,10 @@ public class PedidosFragment extends Fragment {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        txtNombres = root.findViewById(R.id.editTextNombrePedido);
+        /*txtNombres = root.findViewById(R.id.editTextNombrePedido);
         txtEmail = root.findViewById(R.id.editTextEmailPedido);
         txtTelf = root.findViewById(R.id.editTextTelfPedido);
-        txtDirecc = root.findViewById(R.id.editTextDirecPedido);
+        txtDirecc = root.findViewById(R.id.editTextDirecPedido);*/
         //txtNumberCantidad = root.findViewById(R.id.editTextNumberCantidad);
         precioTotal = root.findViewById(R.id.labelprecioTotalPedido);
 
@@ -121,45 +121,59 @@ public class PedidosFragment extends Fragment {
     public void actualizarTotal() {
         BigDecimal total = BigDecimal.ZERO;
         for (Producto producto : instance.listProductoToPedido) {
-            total = total.add(BigDecimal.valueOf(producto.getPrecioConDescuento()));
+            Log.i("Id producto Fragment Pedido: ", String.valueOf(producto.getId()));
+            Integer cantidad = adaptadorProductoParaPedido.getCantidades().get(obtenerIdProducto(producto));
+            Log.i("Cantiddddddd: ", String.valueOf(cantidad));
+            if (cantidad != null) {
+                BigDecimal precioConDescuento = BigDecimal.valueOf(producto.getPrecioConDescuento());
+                total = total.add(precioConDescuento.multiply(BigDecimal.valueOf(cantidad)));
+            }
+            //total = total.add(BigDecimal.valueOf(producto.getPrecioConDescuento()));
         }
         precioTotal.setText(String.format("S./%.2f", total.doubleValue()));
     }
 
-    public void registrarPedido() {
-        ClienteDAO clienteDAO = new ClienteDAO(getContext());
-        Cliente cliente = new Cliente();
+    int obtenerIdProducto(Producto productoSeleccionado) {
+        ProductoDAO productoDAO = new ProductoDAO(getContext());
 
-        cliente.setNombre(txtNombres.getText().toString());
+        return productoDAO.getProductoIdByDescription(productoSeleccionado.getDescripcion());
+    }
+
+    public void registrarPedido() {
+        //ClienteDAO clienteDAO = new ClienteDAO(getContext());
+        //Cliente cliente = new Cliente();
+
+        /*cliente.setNombre(txtNombres.getText().toString());
         cliente.setCorreo(txtEmail.getText().toString());
         cliente.setTelefono(txtTelf.getText().toString());
-        cliente.setDireccion(txtDirecc.getText().toString());
+        cliente.setDireccion(txtDirecc.getText().toString());*/
 
-        boolean res = clienteDAO.insertar(cliente);
-        Log.i("Salida del Insertar DAO: ", String.valueOf(res));
-        Log.i(null, "Datos del cliente -> "+
-                txtNombres.getText().toString()+", "+
-                txtDirecc.getText().toString()+", "+
-                txtEmail.getText().toString()+", "+
-                txtTelf.getText().toString());
+        //boolean res = clienteDAO.insertar(cliente);
+        //Log.i("Salida del Insertar DAO: ", String.valueOf(res));
+        //Log.i(null, "Datos del cliente -> "+
+                //txtNombres.getText().toString()+", "+
+                //txtDirecc.getText().toString()+", "+
+                //txtEmail.getText().toString()+", "+
+                //txtTelf.getText().toString());
 
-        if (res) {
+        //if (res) {
             // El setTimeOut es para esperar que los datos del cliente hayan sido insertados
             // dándole un tiempo apropiado para que salte al evento de registro de pedido
             PedidoDAO pedidoDAO = new PedidoDAO(getContext());
 
-            int idCliente = clienteDAO.getIdByClient(txtEmail.getText().toString());
-            Log.i("ID CLIENTE DESDE EL DAO: ", String.valueOf(idCliente));
+            //int idCliente = clienteDAO.getIdByClient(txtEmail.getText().toString());
+            //Log.i("ID CLIENTE DESDE EL DAO: ", String.valueOf(idCliente));
             Pedido nuevoPedido = new Pedido();
             Date fechaActual = new Date();
 
-            nuevoPedido.setClienteId(idCliente);
-            nuevoPedido.setFechaPedido(fechaActual);
+            nuevoPedido.setClienteId(1); //temporal
+            nuevoPedido.setFechaPedido(fechaActual.getTime());
+            Log.i("Fecha insertada: ", String.valueOf(fechaActual.getTime()));
 
             boolean insertedPedido = pedidoDAO.insertar(nuevoPedido);
             Log.i("Pedido fue insertado?: ", String.valueOf(insertedPedido));
             if (insertedPedido) {
-                int idPedido = pedidoDAO.getIdByClienteId(idCliente);
+                int idPedido = pedidoDAO.getLastId(); // temporal
                 ProductoDAO productoDAO = new ProductoDAO(getContext());
 
                 Map<Integer, Integer> cantidades = adaptadorProductoParaPedido.getCantidades();
@@ -180,7 +194,7 @@ public class PedidosFragment extends Fragment {
                     DetallePedido detallePedido = new DetallePedido();
                     detallePedido.setPedidoId(idPedido);
                     detallePedido.setPrecio(producto.getPrecio()); // Precio unitario
-                    int productoId = productoDAO.getProductoIdByMarca(producto.getMarca());
+                    int productoId = productoDAO.getProductoIdByDescription(producto.getDescripcion());
                     Log.i("ProductoDAO: ", "ID: "+String.valueOf(productoId));
                     detallePedido.setProductoId(productoId);
                     Log.i("Before null value!!!!!!", "Explainmeeeeeeeeeeeeeee");
@@ -189,8 +203,9 @@ public class PedidosFragment extends Fragment {
                     detallePedidoDAO.insertar(detallePedido);
                 }
                 Toast.makeText(getContext(), "Pedido registrado con éxito: ", Toast.LENGTH_SHORT).show();
+                limpiarListPedido();
             }
-            }
+            // }
 
     }
 
@@ -203,7 +218,7 @@ public class PedidosFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(dialog.getContext()));
 
         DetallePedidoDAO detallePedidoDAO = new DetallePedidoDAO(dialog.getContext());
-        List<Historial> historialList = detallePedidoDAO.getAllDetallePedidosByIdClient(21); //Solo un ejemplo, porque el login aún no existe
+        List<Historial> historialList = detallePedidoDAO.getAllDetallePedidos();
         AdaptadorHistorialDetallePedido adap = new AdaptadorHistorialDetallePedido(historialList);
         recyclerView.setAdapter(adap);
 
