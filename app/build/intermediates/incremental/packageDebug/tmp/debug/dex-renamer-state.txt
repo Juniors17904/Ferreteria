@@ -1,4 +1,4 @@
-#Sun Nov 17 02:10:28 PET 2024
+#Sat Nov 30 19:07:45 PET 2024
 base.0=C\:\\Users\\libra\\Downloads\\Ferreteria\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\libra\\Downloads\\Ferreteria\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.10=C\:\\Users\\libra\\Downloads\\Ferreteria\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex

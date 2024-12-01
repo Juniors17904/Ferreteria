@@ -21,4 +21,11 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="lbl_Btn_IniciarSesion">Iniciar Sesion</string>
+    <string name="lbl_Btn_CerrarSesion">Cerrar Sesion</string>
+    <string name="lbl_Btn_Eliminar">Eliminar</string>
+
+
+
 </resources>

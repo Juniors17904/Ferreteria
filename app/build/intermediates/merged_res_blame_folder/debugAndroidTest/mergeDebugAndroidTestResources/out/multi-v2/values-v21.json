@@ -4,7 +4,7 @@
             "outputFile": "com.example.ferreteria.test.app-mergeDebugAndroidTestResources-2:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\libra\\.gradle\\caches\\transforms-4\\80866f8d3edead26f63ac77fc23660d4\\transformed\\core-1.6.1\\res\\values-v21\\values.xml",
+                    "source": "C:\\Users\\libra\\.gradle\\caches\\transforms-4\\20c8108f75817d29ed335dc23ac84dc6\\transformed\\core-1.6.1\\res\\values-v21\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",

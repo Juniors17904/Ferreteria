@@ -2,24 +2,20 @@ package com.example.ferreteria.servicios;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.database.Cursor;
 
 import androidx.annotation.Nullable;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
-import com.example.ferreteria.modelo.dao.CategoriaDAO;
-import com.example.ferreteria.modelo.dto.Categoria;
-import com.example.ferreteria.modelo.dto.Oferta;
+import com.example.ferreteria.modelo.dao.UsuarioDAO;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class ConectaDB extends SQLiteOpenHelper {
 
@@ -69,11 +65,15 @@ public class ConectaDB extends SQLiteOpenHelper {
             Log.i(TAG, "Tabla pedidos creada");
             db.execSQL(ConstantesApp.TABLA_DETALLES_PEDIDOS_DDL);
             Log.i(TAG, "Tabla detalles_pedidos creada");
+            db.execSQL(ConstantesApp.TABLA_USUARIOS_DDL);
+            Log.i(TAG, "Tabla usuarios creada");
             Log.i(TAG, "------------------------------------------");
             Log.i(TAG, "-------ejecutar metodos para insertar ----- ");
+
             insertarCategorias(db);
             insertarProductos(db);
             insertarOfertas(db);
+            insertarUsuarioAdmin2(db);
 
 
 
@@ -92,6 +92,7 @@ public class ConectaDB extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_CATEGORIAS + ";");
             db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_PRODUCTOS + ";");
             db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_OFERTAS + ";");
+            db.execSQL("DROP TABLE IF EXISTS " + ConstantesApp.TABLA_USUARIOS + ";");
 
             onCreate(db);
             Log.i(TAG, "Actualización de base de datos realizada correctamente");
@@ -244,6 +245,60 @@ public class ConectaDB extends SQLiteOpenHelper {
             }
         }Log.i(TAG,"Ofertas Insertadas "+(ofertas.length));
     }
+
+    private void insertarUsuarioAdmin2(SQLiteDatabase db) {
+        Log.i(TAG, "Insertando Admin...");
+
+        // Datos del administrador
+        String[][] admin = {
+                {"Santos", "Murrugarra", "46592704", "90396618", "murrugarra17904@gmail.com", "123456", "admin"}
+        };
+
+        // Recorrer el arreglo y realizar las inserciones
+        for (String[] usuario : admin) {
+            ContentValues valores = new ContentValues();
+            valores.put("nombre", usuario[0]);
+            valores.put("apellido", usuario[1]);
+            valores.put("dni", usuario[2]);
+            valores.put("telefono", usuario[3]);
+            valores.put("email", usuario[4]);
+
+            // Encriptar la contraseña usando SHA-256
+            String contrasenaEncriptada = encriptarSHA256(usuario[5]);
+            valores.put("contrasena", contrasenaEncriptada);  // Usar la contraseña encriptada
+
+            valores.put("roll", usuario[6]);
+
+            // Insertar el usuario en la base de datos
+            try {
+                long id = db.insertOrThrow(ConstantesApp.TABLA_USUARIOS, null, valores);
+                Log.i(TAG, "Administrador insertado con éxito. ID: " + id);
+            } catch (SQLException e) {
+                Log.e(TAG, "Error al insertar el usuario administrador: " + e.getMessage());
+            }
+        }
+    }
+
+    private String encriptarSHA256(String contrasena) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(contrasena.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(TAG, "Error en el algoritmo de encriptación: " + e.getMessage());
+        }
+        return null;
+    }
+
+
+
+
 
 }
 

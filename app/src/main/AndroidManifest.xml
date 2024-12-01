@@ -9,37 +9,51 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+
         <activity
-            android:name=".login.IniciarSesionActivity"
+            android:name=".login.SesionActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".login.RegistrarseActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme" />
+            android:exported="true"
+            android:theme="@style/AppTheme"/>
+
+
+
+
+
+
+
+
+
         <activity
             android:name=".login.LoginActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".ProductosActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".MenuActivity"
             android:exported="false"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".buscar_Activity"
             android:exported="false"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

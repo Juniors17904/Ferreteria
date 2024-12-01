@@ -13,9 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.ferreteria.R;
+import com.example.ferreteria.modelo.dao.UsuarioDAO;
+import com.example.ferreteria.modelo.dto.Usuario;
+import com.example.ferreteria.mtd;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
-private EditText etxUsuario, etxContraseña;
+private EditText etxCorreo, etxContrasena;
 private Button btnRegistrarse, btnLogin;
 private String TAG = "----LOGIN";
 
@@ -25,11 +29,8 @@ private String TAG = "----LOGIN";
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-
         configurarControles();
-        cambiarColorBarraEstado();
-
-
+        mtd.cambiarColorBarraEstado(this);
 
 
     }
@@ -37,8 +38,8 @@ private String TAG = "----LOGIN";
 
 
     private void configurarControles() {
-    etxContraseña = findViewById(R.id.etxContrasena);
-    etxUsuario=findViewById(R.id.etxUsuario);
+    etxContrasena = findViewById(R.id.etxContrasena);
+    etxCorreo =findViewById(R.id.etxUsuario);
     btnRegistrarse=findViewById(R.id.btnRegistrarse);
     btnLogin=findViewById(R.id.btnLogin);
     }
@@ -51,14 +52,43 @@ private String TAG = "----LOGIN";
 
     public void IniciarSesion(View v) {
         Log.i(TAG, "Login clickeado");
-        Intent intent = new Intent(LoginActivity.this, IniciarSesionActivity.class);
-        startActivity(intent);
+
+            if (etxContrasena.getText().toString().isEmpty()||           //si esta alguno esta vacio
+                    etxCorreo.getText().toString().isEmpty())
+                {
+                mtd.Alerta(v,"Debe llenar los Campos");
+                return;
+                }
+
+            UsuarioDAO uDAO = new UsuarioDAO(this);
+            Usuario usuario = uDAO.obtenerUsuarioPorEmail(etxCorreo.getText().toString());
+
+            if (usuario != null) {
+                String contrasenaEncriptada = uDAO.encriptarSHA256(etxContrasena.getText().toString());
+                if (usuario.getContrasena().equals(contrasenaEncriptada)) { // Comparar la contraseña
+
+                    mtd.ocultarTeclado(LoginActivity.this);
+                    mtd.exito(v,"Inicio de sesion exitoso");
+                    mtd.redirigirConDelay(LoginActivity.this, SesionActivity.class, 500);
+
+
+                } else {
+                    mtd.ocultarTeclado(LoginActivity.this);
+                    mtd.Alerta(v,"Contraseña Incorrecta");
+                    Log.i(TAG, "Contraseña incorrecta");
+
+                }
+            } else {
+                mtd.ocultarTeclado(LoginActivity.this);
+                mtd.Alerta(v,"Usuario no encontrado");
+                Log.i(TAG, "Usuario no encontrado");
+
+            }
+
+
+
     }
 
-    private void cambiarColorBarraEstado() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        }
-    }
+
 
 }

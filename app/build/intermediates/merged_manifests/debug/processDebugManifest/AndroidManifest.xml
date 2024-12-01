@@ -24,12 +24,12 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.ferreteria.login.IniciarSesionActivity"
+            android:name="com.example.ferreteria.login.SesionActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.example.ferreteria.login.RegistrarseActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.example.ferreteria.login.LoginActivity"

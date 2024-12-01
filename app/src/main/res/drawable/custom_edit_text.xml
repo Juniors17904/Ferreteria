@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado enfocado -->
+    <item android:state_focused="true">
+        <shape>
+            <solid android:color="#FFFFFF" /> <!-- Fondo blanco -->
+            <stroke
+                android:width="2dp"
+                android:color="#4CAF50" /> <!-- Borde verde al enfocar -->
+            <corners android:radius="8dp" /> <!-- Bordes redondeados -->
+        </shape>
+    </item>
+    <!-- Estado normal (sin foco) -->
+    <item>
+        <shape>
+            <solid android:color="#FFFFFF" /> <!-- Fondo blanco -->
+            <stroke
+                android:width="2dp"
+                android:color="#E0DCDC"/> <!-- Borde plomo delgado -->
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</selector>

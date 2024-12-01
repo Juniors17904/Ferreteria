@@ -65,4 +65,17 @@ public interface ConstantesApp {
             "    telefono VARCHAR(15),\n" +
             "    direccion VARCHAR(250)\n" +
             ");\n";
+
+    // Tabla Usuarios
+    String TABLA_USUARIOS = "usuarios";
+    String TABLA_USUARIOS_DDL = "CREATE TABLE usuarios (\n" +
+            "    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,\n" +
+            "    nombre VARCHAR(60) NOT NULL,\n" +
+            "    apellido VARCHAR(60) NOT NULL,\n" +
+            "    dni VARCHAR(60) NOT NULL,\n" +
+            "    telefono VARCHAR(60) NOT NULL,\n" +
+            "    email VARCHAR(100),\n" +
+            "    contrasena VARCHAR(100) NOT NULL,\n" +
+            "    roll VARCHAR(20)  DEFAULT 'cliente'\n" +
+            ");\n";
 }

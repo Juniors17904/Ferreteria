@@ -10,6 +10,7 @@
         <item name="colorAccent">@color/colorAccent</item> <!-- Color de acento -->
         <item name="android:statusBarColor">@color/colorNoch</item> <!-- Color del NOTCH -->
         <item name="android:navigationBarColor">#454444</item> <!-- Color de la barra de navegación -->
+
     </style>
 
     <!-- Tema principal -->

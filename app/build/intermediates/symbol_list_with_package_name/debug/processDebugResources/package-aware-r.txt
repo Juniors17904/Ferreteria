@@ -1375,6 +1375,7 @@ bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
 color ColorText1
 color ColorText2
+color ColorText3
 color CustomButtonStyle
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
@@ -1405,6 +1406,7 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color azul
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -2142,6 +2144,7 @@ color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
 color ripple_material_dark
 color ripple_material_light
+color rojo
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
@@ -3070,6 +3073,7 @@ drawable cinta_metrica
 drawable cinta_teflon
 drawable codo_pvc
 drawable construccion
+drawable custom_edit_text
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3212,6 +3216,7 @@ id CTRL
 id FUNCTION
 id META
 id NO_DEBUG
+id Nombre
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -3310,6 +3315,7 @@ id bounceStart
 id btnAgregarCarrito
 id btnIniciarSesion
 id btnLogin
+id btnRegister
 id btnRegistrarse
 id buttonPanel
 id cache_measures
@@ -3317,6 +3323,7 @@ id callMeasure
 id cancel_action
 id cancel_button
 id carryVelocity
+id cbAcepto
 id center
 id centerCrop
 id centerInside
@@ -3400,6 +3407,13 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id etApellido
+id etConfirmPassword
+id etDni
+id etEmail
+id etNombre
+id etPassword
+id etTelefono
 id etxContrasena
 id etxUsuario
 id exitUntilCollapsed
@@ -3709,6 +3723,7 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView6
 id text_gallery
 id text_input_end_icon
 id text_input_error_icon
@@ -3740,9 +3755,16 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvApellido
+id tvConfirmPassword
 id tvDescripcion
+id tvDni
+id tvEmail
 id tvMarca
+id tvNombre
+id tvPassword
 id tvPrecio
+id tvTelefono
 id unchecked
 id uniform
 id unlabeled
@@ -3882,11 +3904,11 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_buscar
-layout activity_iniciarsesion
 layout activity_login
 layout activity_menu
 layout activity_productos
 layout activity_registrarse
+layout activity_sesion
 layout app_bar_menu
 layout content_menu
 layout custom_dialog
@@ -4050,6 +4072,9 @@ string icon_content_description
 string invalid_password
 string invalid_username
 string item_view_role_description
+string lbl_Btn_CerrarSesion
+string lbl_Btn_Eliminar
+string lbl_Btn_IniciarSesion
 string login_failed
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium

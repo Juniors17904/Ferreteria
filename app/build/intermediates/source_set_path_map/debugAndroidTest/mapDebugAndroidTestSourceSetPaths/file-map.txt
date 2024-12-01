@@ -1,4 +1,4 @@
-com.example.ferreteria.test.app-core-1.6.1-0 C:\Users\libra\.gradle\caches\transforms-4\80866f8d3edead26f63ac77fc23660d4\transformed\core-1.6.1\res
+com.example.ferreteria.test.app-core-1.6.1-0 C:\Users\libra\.gradle\caches\transforms-4\20c8108f75817d29ed335dc23ac84dc6\transformed\core-1.6.1\res
 com.example.ferreteria.test.app-androidTest-1 C:\Users\libra\Downloads\Ferreteria\app\build\generated\res\resValues\androidTest\debug
 com.example.ferreteria.test.app-mergeDebugAndroidTestResources-2 C:\Users\libra\Downloads\Ferreteria\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
 com.example.ferreteria.test.app-mergeDebugAndroidTestResources-3 C:\Users\libra\Downloads\Ferreteria\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
