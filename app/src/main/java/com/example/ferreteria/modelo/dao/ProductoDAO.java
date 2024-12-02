@@ -1,5 +1,6 @@
 package com.example.ferreteria.modelo.dao;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -172,18 +173,22 @@ public class ProductoDAO {
         return  lista;
     }
 
+    @SuppressLint("Range")
+    public int getProductoIdByDescription(String descrip) {
+        String query = "SELECT id FROM " + ConstantesApp.TABLA_PRODUCTOS + " WHERE descripcion = ? LIMIT 1;";
 
+        int idProducto = -1;
 
+        Cursor cursor = db.rawQuery(query, new String[]{descrip});
 
+        if (cursor.moveToFirst()) {
+            idProducto = cursor.getInt(cursor.getColumnIndex("id"));
+        }
 
+        cursor.close();
 
-
-
-
-
-
-
-
+        return idProducto;
+    }
 
     public List<Producto> Productos(String NombreCategoria){
         List<Producto> lista =new ArrayList<>();

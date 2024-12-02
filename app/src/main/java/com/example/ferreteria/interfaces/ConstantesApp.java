@@ -41,8 +41,9 @@ public interface ConstantesApp {
     String TABLA_PEDIDOS = "pedidos";
     String TABLA_PEDIDOS_DDL = "CREATE TABLE pedidos (\n" +
             "    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,\n" +
-            "    clienteID INTEGER,\n" +
+            "    usuarioID INTEGER,\n" +
             "    fechaPedido DATE\n" +
+            "    total NUMERIC(10,2)\n" +
             ");\n";
 
     // Tabla DetallesPedidos

@@ -5,19 +5,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ferreteria.R;
+import com.example.ferreteria.modelo.dto.ListaProductoParaPedido;
 import com.example.ferreteria.modelo.dto.Producto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.ProductoViewHolder> {
-
+    ListaProductoParaPedido single = ListaProductoParaPedido.getInstance();
     private List<Producto> listaProductos;
     private static final String TAG = "----adpPRODUCTOS";
 
@@ -46,7 +50,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
     @Override
     public void onBindViewHolder(@NonNull ProductoViewHolder holder, int position) {
         Producto producto = listaProductos.get(position);
-        holder.bind(producto);
+        holder.bind(producto, single.listProductoToPedido);
     }
 
     // Retorna la cantidad de items en la lista
@@ -56,14 +60,13 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
 
     }
 
-
-
     //---------------------------
     // ViewHolder para contener las vistas de cada item
     public static class ProductoViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvMarca, tvDescripcion, tvPrecio;
         private ImageView ivImagen;
+        private Button btnAgregarAlCarrito;
 
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,9 +74,10 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
             tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             ivImagen = itemView.findViewById(R.id.ivImagen);
+            btnAgregarAlCarrito = itemView.findViewById((R.id.btnAgregarCarrito));
         }
 
-        public void bind(Producto producto) {
+        public void bind(Producto producto, List<Producto> listaProductoToPedido) {
             tvMarca.setText(producto.getMarca());
             tvDescripcion.setText(producto.getDescripcion());
 
@@ -89,6 +93,33 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
             if (producto.getImagenProducto() != 0) {
                 ivImagen.setImageResource(producto.getImagenProducto());
             }
+
+            btnAgregarAlCarrito.setOnClickListener(v -> {
+                Producto nuevoProducto = new Producto();
+                //nuevoProducto.setImagenProducto(ivImagen.getImageAlpha());
+                nuevoProducto.setDescripcion(tvDescripcion.getText().toString());
+                nuevoProducto.setMarca(tvMarca.getText().toString());
+
+                String withoutPrefixPrecio = tvPrecio.getText().toString().contains("Oferta: S./") ?
+                        tvPrecio.getText().toString().replaceAll("Oferta: S./", "") :
+                        tvPrecio.getText().toString().replaceAll("S./", "");
+
+                nuevoProducto.setPrecio(Double.parseDouble(withoutPrefixPrecio));
+                if (producto.getImagenProducto() != 0) {
+                    nuevoProducto.setImagenProducto(producto.getImagenProducto());
+                }
+
+                if (!listaProductoToPedido.contains(producto)) {
+                    listaProductoToPedido.add(producto);
+                }
+                Log.i(TAG, " agregado");
+                Toast.makeText(v.getContext(), tvMarca.getText().toString()+" agregado al carrito!", Toast.LENGTH_SHORT).show();
+
+                /*for (int x = 0; x < listaProductoToPedido.size(); x++) {
+                    Producto obproducto = listaProductoToPedido.get(x);
+                    Log.i(null, obproducto.getMarca() + " - "+producto.getPrecio());
+                }*/
+            });
         }
     }
 }

@@ -1,17 +1,22 @@
 package com.example.ferreteria.modelo.dao;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
 import com.example.ferreteria.modelo.dto.DetallePedido;
+import com.example.ferreteria.modelo.dto.Historial;
 import com.example.ferreteria.servicios.ConectaDB;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 // Clase para manejar operaciones sobre la tabla de detalles de pedido
 public class DetallePedidoDAO {
@@ -30,10 +35,10 @@ public class DetallePedidoDAO {
     public String insertar(DetallePedido detalle) {
         String resp = "";
         ContentValues registro = new ContentValues();
-        registro.put("PedidoID", detalle.getPedidoId());
-        registro.put("ProductoID", detalle.getProductoId());
-        registro.put("Cantidad", detalle.getCantidad());
-        registro.put("Precio", detalle.getPrecio());
+        registro.put("idPedido", detalle.getPedidoId());
+        registro.put("idProducto", detalle.getProductoId());
+        registro.put("cantidad", detalle.getCantidad());
+        registro.put("precioUnit", detalle.getPrecio());
 
         try {
             db.insertOrThrow(ConstantesApp.TABLA_DETALLES_PEDIDOS, null, registro);
@@ -64,5 +69,57 @@ public class DetallePedidoDAO {
             c.close();
         }
         return lista;
+    }
+
+    @SuppressLint("Range")
+    public double getTotalById(int idDetallePedido) {
+        double total = 0;
+        String query = "SELECT SUM(precioUnit * cantidad) AS total FROM " + ConstantesApp.TABLA_DETALLES_PEDIDOS + " WHERE id = ?;";
+
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(query, new String[]{String.valueOf(idDetallePedido)});
+
+            if (cursor != null && cursor.moveToFirst()) {
+                total += cursor.getDouble(cursor.getColumnIndex("total"));
+            }
+            cursor.close();
+
+            return total;
+        } catch (SQLException e) {
+            Log.i("DAO detalle Pedido: getTotalById", e.getMessage());
+            cursor.close();
+            return total;
+        }
+    }
+
+    @SuppressLint("Range")
+    public List<Historial> getAllDetallePedidos() {
+        List<Historial> listCadaDetallePedidoDelCliente = new ArrayList<>();
+        String query = "SELECT pr.marca as marca, pr.descripcion as descrip, d.cantidad as cantidad, d.precioUnit as precioUnit, pe.fechaPedido as fecha, pr.imagen as imagen FROM " + ConstantesApp.TABLA_DETALLES_PEDIDOS +
+                " d INNER JOIN " +ConstantesApp.TABLA_PRODUCTOS+" pr ON pr.id = d.idProducto INNER JOIN "+ConstantesApp.TABLA_PEDIDOS+
+                " pe ON pe.id = d.idPedido;";
+        try (Cursor cursor = db.rawQuery(query, null)) {
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    do {
+                        Historial historial = new Historial();
+                        historial.setMarca(cursor.getString(cursor.getColumnIndex("marca")));
+                        historial.setDescrip(cursor.getString(cursor.getColumnIndex("descrip")));
+                        historial.setCantidad(cursor.getInt(cursor.getColumnIndex("cantidad")));
+                        historial.setPrecioUnit(cursor.getDouble(cursor.getColumnIndex("precioUnit")));
+                        long timestamp = cursor.getLong(cursor.getColumnIndex("fecha"));
+                        Log.i("DAO FECHA: ", String.valueOf(timestamp));
+                        historial.setFecha(timestamp);
+                        historial.setImagenProducto(cursor.getInt(cursor.getColumnIndex("imagen")));
+
+                        listCadaDetallePedidoDelCliente.add(historial);
+                    } while(cursor.moveToNext());
+                }
+            }
+        } catch (SQLException e) {
+            Log.i("ObtenerHistorialDelCliente: ", e.getMessage());
+        }
+        return listCadaDetallePedidoDelCliente;
     }
 }

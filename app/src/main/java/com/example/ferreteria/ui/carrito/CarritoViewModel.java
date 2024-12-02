@@ -1,16 +1,16 @@
-package com.example.ferreteria.ui.pedidos;
+package com.example.ferreteria.ui.carrito;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class PedidosViewModel extends ViewModel {
+public class CarritoViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public PedidosViewModel() {
+    public CarritoViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("Generar Pedido");
     }
 
     public LiveData<String> getText() {

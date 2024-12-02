@@ -25,7 +25,7 @@
     <string name="lbl_Btn_Eliminar">Eliminar</string>
     <string name="lbl_Btn_IniciarSesion">Iniciar Sesion</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="menu_gallery">Mis Pedidos</string>
+    <string name="menu_gallery">Ver Carrito</string>
     <string name="menu_home">Inicio</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="nav_header_desc">Navigation header</string>
