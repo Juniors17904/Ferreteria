@@ -28,6 +28,7 @@ public class AdaptadorCategorias extends RecyclerView.Adapter<AdaptadorCategoria
         Log.i(TAG, "Adaptador de categorías inicializado con " + categorias.size() + " categorías.");
     }
 //--------
+
     @NonNull
     @Override
     public CategoriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

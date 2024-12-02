@@ -1,7 +1,15 @@
 [
     {
-        "merged": "com.example.ferreteria.app-mergeDebugResources-44:/layout/activity_login.xml",
-        "source": "com.example.ferreteria.app-main-47:/layout/activity_login.xml"
+        "merged": "com.example.ferreteria.app-mergeDebugResources-44:/layout/prueba.xml",
+        "source": "com.example.ferreteria.app-main-47:/layout/prueba.xml"
+    },
+    {
+        "merged": "com.example.ferreteria.app-mergeDebugResources-44:/layout/fragment_carrito.xml",
+        "source": "com.example.ferreteria.app-main-47:/layout/fragment_carrito.xml"
+    },
+    {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\prueba.xml",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\prueba.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\activity_menu.xml",
@@ -16,8 +24,16 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\activity_login.xml"
     },
     {
+        "merged": "com.example.ferreteria.app-mergeDebugResources-44:/layout/item_producto_seleccionado.xml",
+        "source": "com.example.ferreteria.app-main-47:/layout/item_producto_seleccionado.xml"
+    },
+    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\nav_header_menu.xml",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\nav_header_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\item_producto_seleccionado.xml",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\item_producto_seleccionado.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\item_categoria.xml",
@@ -30,6 +46,10 @@
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\activity_buscar.xml",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\activity_buscar.xml"
+    },
+    {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\dialog_historial_pedido.xml",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\dialog_historial_pedido.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\fragment_home.xml",
@@ -52,11 +72,19 @@
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\splash_screen.xml"
     },
     {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\item_historial_pedido.xml",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\item_historial_pedido.xml"
+    },
+    {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\fragment_slideshow.xml",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\fragment_slideshow.xml"
     },
     {
         "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\app_bar_menu.xml",
         "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\app_bar_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-mergeDebugResources-44:\\layout\\dialogo_carrito_vacio.xml",
+        "source": "C:\\Users\\libra\\.gradle\\daemon\\8.7\\com.example.ferreteria.app-main-47:\\layout\\dialogo_carrito_vacio.xml"
     }
 ]

@@ -112,7 +112,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
                 if (!listaProductoToPedido.contains(producto)) {
                     listaProductoToPedido.add(producto);
                 }
-
+                Log.i(TAG, " agregado");
                 Toast.makeText(v.getContext(), tvMarca.getText().toString()+" agregado al carrito!", Toast.LENGTH_SHORT).show();
 
                 /*for (int x = 0; x < listaProductoToPedido.size(); x++) {

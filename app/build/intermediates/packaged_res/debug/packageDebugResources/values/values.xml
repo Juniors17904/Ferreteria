@@ -17,7 +17,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="menu_gallery">Mis Pedidos</string>
+    <string name="menu_gallery">Ver Carrito</string>
     <string name="menu_home">Inicio</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -69,7 +69,7 @@
     <style name="nuevotema" parent="Theme.AppCompat.Light.DarkActionBar">
         
         <item name="colorPrimary">#FF5722</item>
-        <item name="colorPrimaryDark">#E64A19</item>
+        <item name="colorPrimaryDark">#DCE619</item>
         <item name="colorAccent">#FFC107</item>
         <item name="android:statusBarColor">#000000</item>
         <item name="android:windowBackground">#FFFFFF</item>
