@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView iniciado");
+        Log.d(TAG, "Inicio Home");
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 

@@ -42,7 +42,7 @@ public interface ConstantesApp {
     String TABLA_PEDIDOS_DDL = "CREATE TABLE pedidos (\n" +
             "    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,\n" +
             "    usuarioID INTEGER,\n" +
-            "    fechaPedido DATE\n" +
+            "    fechaPedido DATE,\n" +
             "    total NUMERIC(10,2)\n" +
             ");\n";
 
@@ -53,7 +53,8 @@ public interface ConstantesApp {
             "    idPedido INTEGER REFERENCES pedidos(id) NOT NULL,\n" +
             "    idProducto INTEGER REFERENCES productos(id) NOT NULL,\n" +
             "    cantidad INTEGER NOT NULL,\n" +
-            "    precioUnit NUMERIC(10, 2) NOT NULL\n" +
+            "    precioUnit NUMERIC(10, 2) NOT NULL,\n" +
+            "    subtotal NUMERIC(10, 2) NOT NULL\n" +
             ");\n";
 
 

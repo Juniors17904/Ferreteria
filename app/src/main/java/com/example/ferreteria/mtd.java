@@ -42,13 +42,15 @@ public class mtd {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static void redirigirConDelay(final Activity activity, final Class<?> actividadDestino, long delayMillis) {
+    public static void redirigirConDelay(final Activity activity, final Class<?> actividadDestino, long delayMillis, boolean finalizar) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(activity, actividadDestino);
                 activity.startActivity(intent);
-                activity.finish();
+                if (finalizar) {
+                    activity.finish();
+                }
             }
         }, delayMillis); // retraso
     }

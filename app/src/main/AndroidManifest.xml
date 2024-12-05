@@ -12,16 +12,27 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ProductosActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".login.RegistrarseActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ConfirmarPedidoActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MenuActivity"
             android:exported="false"
             android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".login.SesionActivity"
+            android:exported="true"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".buscar_Activity"

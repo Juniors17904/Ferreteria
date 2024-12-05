@@ -24,14 +24,6 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.ferreteria.login.SesionActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="com.example.ferreteria.login.RegistrarseActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name="com.example.ferreteria.login.LoginActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
@@ -40,9 +32,21 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
+            android:name="com.example.ferreteria.login.RegistrarseActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.example.ferreteria.ConfirmarPedidoActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="com.example.ferreteria.MenuActivity"
             android:exported="false"
             android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.example.ferreteria.login.SesionActivity"
+            android:exported="true"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.example.ferreteria.buscar_Activity"

@@ -16,11 +16,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-// Clase para manejar operaciones sobre la tabla de pedidos
+
 public class PedidoDAO {
     private SQLiteDatabase db;
-
-    // Constructor que inicializa la conexión a la base de datos
+    private String TAG = "----PedidoDAO";
     public PedidoDAO(Context context) {
         db = new ConectaDB(context,
                 ConstantesApp.BDD,
@@ -29,21 +28,94 @@ public class PedidoDAO {
                 getWritableDatabase();
     }
 
-    // Método para insertar un nuevo pedido en la base de datos
-    public boolean insertar(Pedido pedido) {
-        String resp = "";
+
+    public long insertarPedido(int usuarioID, String fechaPedido, double total) {
+        Log.i(TAG,"Insertando Pedido");
         ContentValues registro = new ContentValues();
-        registro.put("ClienteID", pedido.getClienteId());
-        registro.put("FechaPedido", pedido.getFechaPedido()); // Almacena la fecha como long
+        registro.put("usuarioID", usuarioID); // Guardamos el usuarioID
+        registro.put("FechaPedido", fechaPedido); // Guardamos la fecha
+        registro.put("Total", total); // Guardamos el total del pedido
+
+        long idPedido = -1;
+        try {
+            // Realizamos la inserción en la base de datos
+            idPedido = db.insertOrThrow(ConstantesApp.TABLA_PEDIDOS, null, registro);
+            if (idPedido == -1) {
+                Log.i(TAG,"Error al insertar el pedido.");
+            } else {
+                Log.i(TAG,"Pedido insertado correctamente con ID: " + idPedido);
+            }
+        } catch (SQLException ex) {
+            Log.i(TAG,"Inserción de Pedido:"+ ex.getMessage());
+        }
+
+        return idPedido; // Retorna el ID del pedido insertado
+    }
+
+    public int inse454rtarPedidok(int usuarioID, Date fechaPedido, double total) {
+        ContentValues registro = new ContentValues();
+        registro.put("ClienteID", usuarioID);
+        registro.put("FechaPedido", fechaPedido.getTime());  // Convierte Date a long para almacenarlo
 
         try {
-            db.insertOrThrow(ConstantesApp.TABLA_PEDIDOS, null, registro);
-            return true;
+            long rowId = db.insertOrThrow(ConstantesApp.TABLA_PEDIDOS, null, registro);
+            return (int) rowId;  // Retorna el ID generado como int
         } catch (SQLException ex) {
             Log.i("Inserción de Pedido: ", ex.getMessage());
+            return -1;  // Retorna -1 si hubo un error
+        }
+    }
+
+    public boolean insertarDetallePedido34(long idPedido, int idProducto, int cantidad, double precioUnitario) {
+        Log.i(TAG,"Insertando Detalle Pedido");
+        ContentValues registro = new ContentValues();
+        registro.put("idPedido", idPedido);
+        registro.put("idProducto", idProducto);
+        registro.put("cantidad", cantidad);
+        registro.put("precioUnitario", precioUnitario);
+
+        try {
+            long result = db.insertOrThrow(ConstantesApp.TABLA_DETALLES_PEDIDOS, null, registro);
+            return result != -1;  // Si el resultado es -1, la inserción falló
+        } catch (SQLException ex) {
+            Log.e(TAG,"Inserción Detalle Pedido: "+ ex.getMessage());
             return false;
         }
     }
+
+    public boolean insertarDetallePedido(long idPedido, int idProducto, int cantidad, double precioUnitario) {
+        Log.i(TAG,"Insertando Detalle Pedido");
+
+        // Preparamos los valores a insertar en la tabla detalles_pedidos
+        ContentValues registro = new ContentValues();
+        registro.put("idPedido", idPedido); // Relación con la tabla pedidos
+        registro.put("idProducto", idProducto); // Relación con la tabla productos
+        registro.put("cantidad", cantidad);
+        registro.put("precioUnit", precioUnitario); // Precio unitario del producto
+
+        // Intentamos insertar el registro en la base de datos
+        try {
+            long result = db.insertOrThrow(ConstantesApp.TABLA_DETALLES_PEDIDOS, null, registro);
+
+            // Si la inserción fue exitosa (el ID no es -1), retornamos true
+            if (result != -1) {
+                Log.i(TAG, "Detalle del pedido insertado correctamente con ID: " + result);
+                return true;
+            } else {
+                Log.e(TAG, "Error al insertar el detalle del pedido.");
+                return false;
+            }
+        } catch (SQLException ex) {
+            Log.e(TAG, "Inserción Detalle Pedido: " + ex.getMessage());
+            return false;
+        }
+    }
+
+
+
+
+
+
 
     // Método para obtener una lista de pedidos de la base de datos
     public List<Pedido> getList() {

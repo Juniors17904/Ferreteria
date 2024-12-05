@@ -12,11 +12,12 @@ public class Producto {
     private int stock;
     private int categoriaId;
     private int imagenProducto;
+    private int cantidad;
 
     public Producto() {
     }
 
-    public Producto(int id, String marca, String descripcion, double precio, double precioConDescuento, boolean tieneOferta, int stock, int categoriaId, int imagenProducto) {
+    public Producto(int id, String marca, String descripcion, double precio, double precioConDescuento, boolean tieneOferta, int stock, int categoriaId, int imagenProducto ,int cantidad) {
         this.id = id;
         this.marca = marca;
         this.descripcion = descripcion;
@@ -26,6 +27,7 @@ public class Producto {
         this.stock = stock;
         this.categoriaId = categoriaId;
         this.imagenProducto = imagenProducto;
+        this.cantidad = cantidad;
     }
 
     public int getId() {
@@ -99,6 +101,15 @@ public class Producto {
     public void setImagenProducto(int imagenProducto) {
         this.imagenProducto = imagenProducto;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
 
     @NonNull
     @Override

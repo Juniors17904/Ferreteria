@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.example.ferreteria.interfaces.ConstantesApp;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Clase para manejar operaciones sobre la tabla de Usuario
-public class UsuarioDAO {
+public class UsuarioDAO  {
     private SQLiteDatabase db;
     private String TAG = "----UsuarioDAO";
 
@@ -30,8 +31,6 @@ public class UsuarioDAO {
                 ConstantesApp.VERSION).
                 getWritableDatabase();
     }
-
-
 
 
     public String insertar(Usuario u) {
@@ -98,7 +97,7 @@ public class UsuarioDAO {
         }
     }
 
-    // Método para obtener una lista de todos los usuarios
+
     public List<Usuario> getList() {
         List<Usuario> lista = new ArrayList<>();
         String cadSQL = "SELECT * FROM " + ConstantesApp.TABLA_USUARIOS + ";";

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,21 +24,21 @@ public final class NavHeaderMenuBinding implements ViewBinding {
   public final Button btnIniciarSesion;
 
   @NonNull
-  public final ImageView imageView;
-
-  @NonNull
-  public final TextView textView;
+  public final TextView claridad;
 
   @NonNull
   public final TextView textView4;
 
+  @NonNull
+  public final TextView txUsuariologeado;
+
   private NavHeaderMenuBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnIniciarSesion,
-      @NonNull ImageView imageView, @NonNull TextView textView, @NonNull TextView textView4) {
+      @NonNull TextView claridad, @NonNull TextView textView4, @NonNull TextView txUsuariologeado) {
     this.rootView = rootView;
     this.btnIniciarSesion = btnIniciarSesion;
-    this.imageView = imageView;
-    this.textView = textView;
+    this.claridad = claridad;
     this.textView4 = textView4;
+    this.txUsuariologeado = txUsuariologeado;
   }
 
   @Override
@@ -75,15 +74,9 @@ public final class NavHeaderMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.imageView;
-      ImageView imageView = ViewBindings.findChildViewById(rootView, id);
-      if (imageView == null) {
-        break missingId;
-      }
-
-      id = R.id.textView;
-      TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
+      id = R.id.claridad;
+      TextView claridad = ViewBindings.findChildViewById(rootView, id);
+      if (claridad == null) {
         break missingId;
       }
 
@@ -93,8 +86,14 @@ public final class NavHeaderMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      return new NavHeaderMenuBinding((ConstraintLayout) rootView, btnIniciarSesion, imageView,
-          textView, textView4);
+      id = R.id.txUsuariologeado;
+      TextView txUsuariologeado = ViewBindings.findChildViewById(rootView, id);
+      if (txUsuariologeado == null) {
+        break missingId;
+      }
+
+      return new NavHeaderMenuBinding((ConstraintLayout) rootView, btnIniciarSesion, claridad,
+          textView4, txUsuariologeado);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

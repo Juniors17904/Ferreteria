@@ -19,7 +19,7 @@ import java.util.List;
 // Clase para manejar operaciones sobre la tabla de productos
 public class ProductoDAO {
     private SQLiteDatabase db;
-    private String TAG= "----ProductoDAO";
+    private String TAG = "----ProductoDAO";
 
     // Constructor que inicializa la conexión a la base de datos
     public ProductoDAO(Context context) {
@@ -130,7 +130,7 @@ public class ProductoDAO {
         return lista;
     }
 
-    public List<Producto> mostrarOtrosProductos(int id){
+    public List<Producto> mostrarOtrosProductos(int id) {
         List<Producto> lista = new ArrayList<>();
         Log.i(TAG, "mostrar otros productos ");
         // Consulta SQL para obtener los productos con descuento
@@ -170,25 +170,99 @@ public class ProductoDAO {
             c.close();
         }
         Log.i(TAG, "Número de productos encontrados: " + lista.size());
-        return  lista;
+        return lista;
     }
 
+    public double obtenerPrecioPorId(int idProducto) {
+        double precio = 0.0;
+        String cadSQL = "SELECT Precio FROM " + ConstantesApp.TABLA_PRODUCTOS + " WHERE id = ?;";
+        Cursor c = db.rawQuery(cadSQL, new String[]{String.valueOf(idProducto)});
+
+        if (c != null) {
+            if (c.moveToFirst()) {
+                precio = c.getDouble(c.getColumnIndexOrThrow("Precio"));
+            }
+            c.close();
+        }
+        return precio;
+    }
+
+
+
+
+
     @SuppressLint("Range")
+
     public int getProductoIdByDescription(String descrip) {
         String query = "SELECT id FROM " + ConstantesApp.TABLA_PRODUCTOS + " WHERE descripcion = ? LIMIT 1;";
-
         int idProducto = -1;
 
-        Cursor cursor = db.rawQuery(query, new String[]{descrip});
-
-        if (cursor.moveToFirst()) {
-            idProducto = cursor.getInt(cursor.getColumnIndex("id"));
+        // Asegurarse de que la descripción no sea nula o vacía
+        if (descrip == null || descrip.isEmpty()) {
+            Log.i(TAG, "Descripción no válida: " + descrip);  // Log de descripción no válida
+            return idProducto;  // Retorna -1 si la descripción es inválida
         }
 
-        cursor.close();
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(query, new String[]{descrip});
+
+            if (cursor != null && cursor.moveToFirst()) {
+                idProducto = cursor.getInt(cursor.getColumnIndex("id"));
+                Log.i(TAG, "-----DAO  Producto encontrado con ID: " + idProducto);  // Log del ID del producto encontrado
+            } else {
+                Log.i(TAG, "No se encontró producto para la descripción: " + descrip);  // Log si no se encuentra el producto
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error al consultar producto por descripción: " + descrip, e);  // Log del error con excepción
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
 
         return idProducto;
     }
+
+    public List<Producto> getTodosLosProductos() {
+        List<Producto> listaProductos = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            String query = "SELECT * FROM productos"; // Ensure the table name is correct.
+            cursor = db.rawQuery(query, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Producto producto = new Producto(
+                            cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                            cursor.getString(cursor.getColumnIndexOrThrow("marca")),
+                            cursor.getString(cursor.getColumnIndexOrThrow("descripcion")),
+                            cursor.getDouble(cursor.getColumnIndexOrThrow("precio")),
+                            cursor.getDouble(cursor.getColumnIndexOrThrow("precioConDescuento")),
+                            cursor.getInt(cursor.getColumnIndexOrThrow("tieneOferta")) > 0,
+                            cursor.getInt(cursor.getColumnIndexOrThrow("stock")),
+                            cursor.getInt(cursor.getColumnIndexOrThrow("categoriaId")),
+                            cursor.getInt(cursor.getColumnIndexOrThrow("imagenProducto")),
+                            cursor.getInt(cursor.getColumnIndexOrThrow("cantidad"))
+                    );
+                    listaProductos.add(producto);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.e("ProductoDAO", "Error al obtener los productos: " + e.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return listaProductos;
+    }
+
 
     public List<Producto> Productos(String NombreCategoria){
         List<Producto> lista =new ArrayList<>();

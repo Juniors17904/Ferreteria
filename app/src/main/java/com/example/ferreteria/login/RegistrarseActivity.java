@@ -46,7 +46,7 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     public void Registrarse(View v) {
         String resp;
-        Log.i(TAG , "REGISTRARSE");
+        Log.i(TAG , "BTN  REGISTRARSE");
         if (cbAcepto.isChecked()) { //si esta marcado
             if (    etnombre.getText().toString().isEmpty()||
                     etdni.getText().toString().isEmpty()||              //si esta alguno esta vacio
@@ -68,7 +68,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                 return;
             }
 
-            Log.i(TAG ,"LOGICA ");
+
             UsuarioDAO uDAO = new UsuarioDAO(this);
             Usuario u = new Usuario();
 
@@ -82,7 +82,7 @@ public class RegistrarseActivity extends AppCompatActivity {
             u.setContrasena(contrasenaEncriptada);
 
 
-            Log.i(TAG,u.getNombre()+contrasenaEncriptada);
+            Log.i(TAG,"Usuario "+u.getNombre()+" Contraseña encriptada "+contrasenaEncriptada);
 
             resp = uDAO.insertar(u);
 
@@ -90,7 +90,7 @@ public class RegistrarseActivity extends AppCompatActivity {
             {
                 mtd.exito(v,"Cliente "+u.getEmail()+" Registrado Con EXITO");
 
-                mtd.redirigirConDelay(RegistrarseActivity.this, LoginActivity.class, 800);
+                mtd.redirigirConDelay(RegistrarseActivity.this, LoginActivity.class, 800,true);
 
             }
 
